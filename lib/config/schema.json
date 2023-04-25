@@ -1521,7 +1521,7 @@
       "alias": "create_review_submission",
       "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions",
       "http_body_type": "ReviewSubmissionCreateRequest",
-      "http_method": "post",
+      "http_method": "post"
     },
     {
       "http_method": "patch",
