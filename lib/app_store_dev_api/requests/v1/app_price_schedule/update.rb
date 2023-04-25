@@ -6,7 +6,9 @@ module AppStoreDevApi
       module AppPriceSchedule
         class Update < Request::Body
           data do
+            
             type 'appPriceSchedules'
+
           end
         end
       end

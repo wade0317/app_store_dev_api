@@ -577,7 +577,7 @@
     },
     {
       "alias": "list_in_app_purchase_all_price_points",
-      "http_method": "delete",
+      "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/pricePoints"
     },
     {
@@ -1519,9 +1519,9 @@
     },
     {
       "alias": "create_review_submission",
-      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions",
       "http_body_type": "ReviewSubmissionCreateRequest",
-      "http_method": "post"
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions"
     },
     {
       "http_method": "patch",
