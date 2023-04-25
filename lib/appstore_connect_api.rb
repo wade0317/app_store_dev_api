@@ -3,8 +3,8 @@
 require 'zeitwerk'
 require 'active_support/all'
 
-appstore_connect_api_LOADER = Zeitwerk::Loader.for_gem
-appstore_connect_api_LOADER.setup
+appstore_dev_api_LOADER = Zeitwerk::Loader.for_gem
+appstore_dev_api_LOADER.setup
 
 module AppStoreConnectApi
   @config = {}

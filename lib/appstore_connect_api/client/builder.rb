@@ -72,7 +72,7 @@ module AppStoreConnectApi
       end
 
       def write
-        File.write('lib/appstore_connect_api/client.rb', source)
+        File.write('lib/appstore_dev_api/client.rb', source)
       end
 
       def source

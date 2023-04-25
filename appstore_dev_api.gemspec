@@ -3,23 +3,23 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'appstore_connect_api/version'
+require 'appstore_dev_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name = "appstore_connect_api"
+  spec.name = "appstore_dev_api"
   spec.version = AppStoreConnectApi::VERSION
   spec.authors = ["wade"]
   spec.email = ["wade@gmail.com"]
 
   spec.summary = "easy work for app_store_connect work"
   spec.description = "easy work for app_store_connect"
-  spec.homepage = "https://github.com/wade0317/appstore_connect_api.git."
+  spec.homepage = "https://github.com/wade0317/appstore_dev_api.git."
   spec.license = "MIT"
   
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/wade0317/appstore_connect_api.git.git"
-  spec.metadata["changelog_uri"] = "https://github.com/wade0317/appstore_connect_api.git/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/wade0317/appstore_dev_api.git.git"
+  spec.metadata["changelog_uri"] = "https://github.com/wade0317/appstore_dev_api.git/blob/main/CHANGELOG.md"
 
 
   spec.require_paths = ['lib']

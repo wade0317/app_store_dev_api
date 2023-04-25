@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'appstore_connect_api/schema/type'
-require 'appstore_connect_api/schema/object'
-require 'appstore_connect_api/schema/web_service_endpoint'
+require 'appstore_dev_api/schema/type'
+require 'appstore_dev_api/schema/object'
+require 'appstore_dev_api/schema/web_service_endpoint'
 
 module AppStoreConnectApi
   class Schema

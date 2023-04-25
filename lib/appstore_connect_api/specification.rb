@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'net/http'
-require 'appstore_connect_api/specification/component/schema'
+require 'appstore_dev_api/specification/component/schema'
 
 module AppStoreConnectApi
   class Specification

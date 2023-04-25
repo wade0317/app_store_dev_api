@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'appstore_connect_api'
+require 'appstore_dev_api'
 require 'rake'
 
 load './lib/tasks/console.rake'

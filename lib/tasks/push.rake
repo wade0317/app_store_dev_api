@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'appstore_connect_api/version'
+require 'appstore_dev_api/version'
 
 version = AppStoreConnectApi::VERSION
 
