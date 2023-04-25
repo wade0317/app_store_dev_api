@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'appstore_dev_api/version'
+require 'app_store_dev_api/version'
 
 desc 'Release'
 task :release do

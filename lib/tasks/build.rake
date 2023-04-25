@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'appstore_dev_api/version'
+require 'app_store_dev_api/version'
 
-desc "Build appstore_dev_api-#{AppStoreConnectApi::VERSION}.gem"
+desc "Build app_store_dev_api-#{AppStoreDevApi::VERSION}.gem"
 task :build do
-  sh %(gem build appstore_dev_api.gemspec)
+  sh %(gem build app_store_dev_api.gemspec)
 end

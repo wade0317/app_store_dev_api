@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'appstore_dev_api/version'
+require 'app_store_dev_api/version'
 
-version = AppStoreConnectApi::VERSION
+version = AppStoreDevApi::VERSION
 
 desc "Push app_store_connect-#{version}.gem"
 task :push, [:key] do |_task, args|
