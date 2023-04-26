@@ -3,14 +3,14 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module SubscriptionPrices
+      module SubscriptionPrice
         class Create < Request::Body
           data do
             type 'subscriptionPrices'
 
             attributes do
-              property :preserve_current_price
-              property :start_date
+              property :preserve_current_price 
+              property :startDate
             end
           end
         end

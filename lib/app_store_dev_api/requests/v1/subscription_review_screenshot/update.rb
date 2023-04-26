@@ -3,7 +3,7 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module SubscriptionAppStoreReviewScreenshot
+      module SubscriptionReviewScreenshot
         class Update < Request::Body
           data do
             id

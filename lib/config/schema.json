@@ -287,27 +287,27 @@
       "alias": "beta_tester_relationships_apps"
     },
     {
+      "alias": "beta_tester_beta_groups",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/{id}/betaGroups",
-      "alias": "beta_tester_beta_groups"
+      "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/{id}/betaGroups"
     },
     {
+      "alias": "beta_tester_relationships_beta_groups",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/{id}/relationships/betaGroups",
-      "alias": "beta_tester_relationships_beta_groups"
+      "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/{id}/relationships/betaGroups"
     },
     {
-      "alias": "apps",
+      "alias": "list_apps",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/apps"
     },
     {
-      "alias": "app",
+      "alias": "app_info",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}"
     },
     {
-      "alias": "update_app",
+      "alias": "update_app_info",
       "http_method": "patch",
       "http_body_type": "Requests::V1::App::Update",
       "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}"
@@ -704,14 +704,14 @@
     },
     {
       "alias": "create_subscription_group",
-      "http_body_type": "Requests::V1::SubscriptionGroups::Create",
+      "http_body_type": "Requests::V1::SubscriptionGroup::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionGroups"
     },
     {
       "alias": "list_all_subscription_groups_for_app",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionGroups"
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/subscriptionGroups"
     },
     {
       "alias": "read_subscription_group_info",
@@ -720,7 +720,7 @@
     },
     {
       "alias": "update_subscription_group",
-      "http_body_type": "Requests::V1::SubscriptionGroups::Update",
+      "http_body_type": "Requests::V1::SubscriptionGroup::Update",
       "http_method": "patch",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionGroups/{id}"
     },
@@ -834,13 +834,13 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/prices"
     },
     {
-      "alias": "delete_subscription_all_price_ids",
+      "alias": "delete_subscription_price",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/prices"
     },
     {
       "alias": "read_subscription_review_screenshot",
-      "http_method": "delete",
+      "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/appStoreReviewScreenshot"
     },
     {
@@ -877,7 +877,7 @@
     },
     {
       "alias": "create_subscription_price",
-      "http_body_type": "Requests::V1::SubscriptionPrices::Create",
+      "http_body_type": "Requests::V1::SubscriptionPrice::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionPrices"
     },
@@ -909,13 +909,13 @@
     },
     {
       "alias": "create_subscription_review_screenshot",
-      "http_body_type": "Requests::V1::SubscriptionAppStoreReviewScreenshot::Create",
+      "http_body_type": "Requests::V1::SubscriptionReviewScreenshot::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionAppStoreReviewScreenshots"
     },
     {
       "alias": "update_subscription_app_store_review_screenshot",
-      "http_body_type": "Requests::V1::SubscriptionAppStoreReviewScreenshot::Update",
+      "http_body_type": "Requests::V1::SubscriptionReviewScreenshot::Update",
       "http_method": "patch",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionAppStoreReviewScreenshots/{id}"
     },

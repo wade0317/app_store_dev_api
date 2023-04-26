@@ -11,8 +11,7 @@ module AppStoreDevApi
             type 'subscriptionGroupLocalizations'
 
             attributes do
-              property :name, required: true
-              property :locale, required: true
+              property :name
               property :custom_app_name
             end
             

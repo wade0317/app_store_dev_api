@@ -3,7 +3,7 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module SubscriptionAppStoreReviewScreenshot
+      module SubscriptionReviewScreenshot
         class Create < Request::Body
           data do
             type 'subscriptionAppStoreReviewScreenshots'
