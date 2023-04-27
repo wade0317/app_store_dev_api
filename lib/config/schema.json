@@ -834,7 +834,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/prices"
     },
     {
-      "alias": "delete_subscription_price",
+      "alias": "delete_subscription_all_price",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/prices"
     },
@@ -866,7 +866,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionLocalizations/{id}"
     },
     {
-      "alias": "read_subscription_price_points",
+      "alias": "read_subscription_price_points_info",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/{id}"
     },

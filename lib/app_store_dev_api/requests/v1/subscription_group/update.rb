@@ -10,7 +10,7 @@ module AppStoreDevApi
             type 'subscriptionGroups'
             
             attributes do
-              property :reference_name, required: true
+              property :reference_name
             end
 
           end
