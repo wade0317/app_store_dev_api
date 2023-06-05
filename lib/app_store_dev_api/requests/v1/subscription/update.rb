@@ -10,7 +10,7 @@ module AppStoreDevApi
             type 'subscriptions'
 
             attributes do
-              property :name, required: true
+              property :name
               property :available_in_all_territories
               property :family_sharable
               property :review_note
