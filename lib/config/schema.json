@@ -119,12 +119,12 @@
     {
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/users",
-      "alias": "users"
+      "alias": "list_users"
     },
     {
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/users/{id}",
-      "alias": "user"
+      "alias": "read_user_info"
     },
     {
       "http_method": "get",
@@ -338,7 +338,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/appPriceSchedules/{id}/baseTerritory"
     },
     {
-      "alias": "create_app_price_schedules",
+      "alias": "create_app_price_schedule",
       "http_method": "post",
       "http_body_type": "Requests::V1::AppPriceSchedule::Update",
       "url": "https://api.appstoreconnect.apple.com/v1/appPriceSchedules"
@@ -591,7 +591,7 @@
       "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/inAppPurchaseLocalizations"
     },
     {
-      "alias": "read_in_app_purchase_review_screenshot",
+      "alias": "read_review_screenshot_for_in_app_purchase",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/appStoreReviewScreenshot"
     },
@@ -681,7 +681,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseLocalizations/{id}"
     },
     {
-      "alias": "read_in_app_purchase_screenshot",
+      "alias": "read_in_app_purchase_review_screenshot",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseAppStoreReviewScreenshots/{id}"
     },
@@ -789,23 +789,23 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/subscriptionLocalizations"
     },
     {
-      "alias": "list_subscription_all_introductory_offers",
+      "alias": "list_all_introductory_offers_for_subscription",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/introductoryOffers"
     },
     {
-      "alias": "list_subscription_introductory_offer_resoure_ids",
+      "alias": "list_all_introductory_offers_ids_for_subscription",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/introductoryOffers"
     },
     {
-      "alias": "delete_subscription_introductory_offer",
+      "alias": "delete_introductory_offers_for_subscription",
       "http_method": "delete",
-      "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/promotedPurchase"
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/introductoryOffers"
     },
     {
       "alias": "read_subscription_promoted_purchase_info",
-      "http_method": "delete",
+      "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/promotedPurchase"
     },
     {
@@ -816,7 +816,7 @@
     {
       "alias": "list_subscription_promotional_offer_resoure_ids",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/introductoryOffers"
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/promotionalOffers"
     },
     {
       "alias": "list_subscription_price_points",
@@ -839,7 +839,13 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/prices"
     },
     {
-      "alias": "read_subscription_review_screenshot",
+      "alias": "create_subscription_price_schedule",
+      "http_body_type": "Requests::V1::SubscriptionPriceSchedule::Create",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionPriceSchedules"
+    },
+    {
+      "alias": "read_review_screenshot_for_subscription",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/appStoreReviewScreenshot"
     },
@@ -903,7 +909,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionAvailabilities"
     },
     {
-      "alias": "read_subscription_screenshot",
+      "alias": "read_subscription_review_screenshot",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionAppStoreReviewScreenshots/{id}"
     },
@@ -914,7 +920,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionAppStoreReviewScreenshots"
     },
     {
-      "alias": "update_subscription_app_store_review_screenshot",
+      "alias": "update_subscription_review_screenshot",
       "http_body_type": "Requests::V1::SubscriptionReviewScreenshot::Update",
       "http_method": "patch",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionAppStoreReviewScreenshots/{id}"
