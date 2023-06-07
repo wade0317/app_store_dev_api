@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["wade"]
   spec.email = ["wade@gmail.com"]
 
-  spec.summary = "easy work for app_store_connect work"
-  spec.description = "easy work for app_store_connect"
+  spec.summary = "easy work for app_store_dev_api work"
+  spec.description = "easy work for app_store_dev_api"
   spec.homepage = "https://github.com/wade0317/app_store_dev_api.git."
   spec.license = "MIT"
   

@@ -9,7 +9,7 @@
 module AppStoreDevApi
   class Client < Base
     #
-    # @see https://developer.apple.com/documentation/AppStoreDevApi
+    # @see https://developer.apple.com/documentation/appstoreconnectapi
     #
     def create_certificate(**kwargs)
       web_service_endpoint = Schema::WebServiceEndpoint.new(
@@ -20,7 +20,7 @@ module AppStoreDevApi
     end
 
     #
-    # @see https://developer.apple.com/documentation/AppStoreDevApi
+    # @see https://developer.apple.com/documentation/appstoreconnectapi
     #
     def delete_visible_app(**kwargs)
       web_service_endpoint = Schema::WebServiceEndpoint.new(
@@ -31,7 +31,7 @@ module AppStoreDevApi
     end
 
     #
-    # @see https://developer.apple.com/documentation/AppStoreDevApi/register_a_new_bundle_id
+    # @see https://developer.apple.com/documentation/appstoreconnectapi/register_a_new_bundle_id
     #
     def create_bundle_id(**kwargs)
       web_service_endpoint = Schema::WebServiceEndpoint.new(
@@ -42,7 +42,7 @@ module AppStoreDevApi
     end
 
     #
-    # @see https://developer.apple.com/documentation/AppStoreDevApi
+    # @see https://developer.apple.com/documentation/appstoreconnectapi
     #
     def create_bundle_id_capability(**kwargs)
       web_service_endpoint = Schema::WebServiceEndpoint.new(
@@ -53,7 +53,7 @@ module AppStoreDevApi
     end
 
     #
-    # @see https://developer.apple.com/documentation/AppStoreDevApi
+    # @see https://developer.apple.com/documentation/appstoreconnectapi
     #
     def create_beta_build_localization(**kwargs)
       web_service_endpoint = Schema::WebServiceEndpoint.new(

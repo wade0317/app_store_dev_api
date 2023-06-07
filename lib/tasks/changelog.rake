@@ -4,8 +4,8 @@ require 'github_changelog_generator'
 
 task :changelog, [:release] do |_task, args|
   options = GitHubChangelogGenerator::Parser.default_options
-  options[:user] = 'kyledecot'
-  options[:project] = 'app_store_connect'
+  options[:user] = 'wade'
+  options[:project] = 'app_store_dev_api'
   options[:future_release] = args[:release]
 
   generator = GitHubChangelogGenerator::Generator.new(options)

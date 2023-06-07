@@ -17,7 +17,7 @@ module AppStoreDevApi
 
       def to_h
         {
-          data: data.to_h,
+          data: data.to_data_type,
           included: included.to_a
         }
       end
