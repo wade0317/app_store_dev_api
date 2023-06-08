@@ -64,7 +64,7 @@ module AppStoreDevApi
           {
             "alias": 'create_beta_build_localization',
             "url": 'https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations',
-            "http_body_type": 'BetaBuildLocalizationCreateRequest',
+            "http_body_type": 'Requests::V1::BetaBuildLocalization::Create',
             "http_method": 'post',
             "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
           }

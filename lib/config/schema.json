@@ -113,7 +113,7 @@
     {
       "alias": "modify_beta_build_localization",
       "url": "https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations/{id}",
-      "http_body_type": "BetaBuildLocalizationModifyRequest",
+      "http_body_type": "Requests::V1::BetaBuildLocalization::Update",
       "http_method": "patch"
     },
     {
@@ -800,6 +800,7 @@
     },
     {
       "alias": "delete_introductory_offers_for_subscription",
+      "http_body_type": "Requests::V1::Subscription::Update",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/introductoryOffers"
     },

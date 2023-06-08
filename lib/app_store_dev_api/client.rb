@@ -57,7 +57,7 @@ module AppStoreDevApi
     #
     def create_beta_build_localization(**kwargs)
       web_service_endpoint = Schema::WebServiceEndpoint.new(
-        { http_body_type: 'BetaBuildLocalizationCreateRequest', http_method: 'post', url: 'https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations' }
+        { http_body_type: 'Requests::V1::BetaBuildLocalization::Update', http_method: 'post', url: 'https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations' }
       )
 
       call(web_service_endpoint, **kwargs)
