@@ -38,7 +38,7 @@ module AppStoreDevApi
             "alias": 'create_certificate',
             "http_method": 'post',
             "url": 'https://api.appstoreconnect.apple.com/v1/certificates',
-            "http_body_type": 'CertificateCreateRequest',
+            "http_body_type": 'Requests::V1::Certificate::Create',
             "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
           },
           {
@@ -50,14 +50,14 @@ module AppStoreDevApi
           {
             "alias": 'create_bundle_id',
             "url": 'https://api.appstoreconnect.apple.com/v1/bundleIds',
-            "http_body_type": 'BundleIdCreateRequest',
+            "http_body_type": 'Requests::V1::BundleId::Create',
             "http_method": 'post',
             "see": 'https://developer.apple.com/documentation/appstoreconnectapi/register_a_new_bundle_id'
           },
           {
             "alias": 'create_bundle_id_capability',
             "url": 'https://api.appstoreconnect.apple.com/v1/bundleIdCapabilities',
-            "http_body_type": 'BundleIdCapabilityCreateRequest',
+            "http_body_type": 'Requests::V1::BundleIdCapability::Create',
             "http_method": 'post',
             "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
           },

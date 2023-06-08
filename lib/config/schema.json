@@ -96,18 +96,18 @@
       "alias": "create_profile",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/profiles",
-      "http_body_type": "ProfileCreateRequest"
+      "http_body_type": "Requests::V1::Profile::Create"
     },
     {
       "alias": "create_device",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/devices",
-      "http_body_type": "DeviceCreateRequest"
+      "http_body_type": "Requests::V1::Device::Create"
     },
     {
       "alias": "create_user_invitation",
       "url": "https://api.appstoreconnect.apple.com/v1/userInvitations",
-      "http_body_type": "UserInvitationCreateRequest",
+      "http_body_type": "Requests::V1::UserInvitation::Create",
       "http_method": "post"
     },
     {
@@ -800,8 +800,8 @@
     },
     {
       "alias": "delete_introductory_offers_for_subscription",
-      "http_body_type": "Requests::V1::Subscription::Update",
       "http_method": "delete",
+      "http_body_type": "Requests::V1::SubscriptionIntroductoryOffer::Delete",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/relationships/introductoryOffers"
     },
     {
@@ -892,6 +892,12 @@
       "alias": "delete_subscription_price",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionPrices/{id}"
+    },
+    {
+      "alias": "create_subscription_price_change_consent_reason",
+      "http_body_type": "Requests::V1::SubscriptionPriceChangeConsentReason::Create",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionPriceChangeConsentReasons"
     },
     {
       "alias": "read_subscription_availability",

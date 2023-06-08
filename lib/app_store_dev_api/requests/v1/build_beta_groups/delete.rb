@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module AppStoreConnect
+module AppStoreDevApi
   module Requests
     module V1
       module BuildBetaGroups
