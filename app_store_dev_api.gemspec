@@ -32,9 +32,9 @@ Gem::Specification.new do |spec|
 
 
 
-  spec.add_runtime_dependency 'activesupport', '>= 6.0.0'
+  spec.add_runtime_dependency 'activesupport', '~> 7.0.8'
   spec.add_runtime_dependency 'jwt', '>= 1.4'
-  spec.add_runtime_dependency 'zeitwerk', '>= 2.6.7'
+  spec.add_runtime_dependency 'zeitwerk', '>= 2.6.12'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'erb', '~> 4.0.2'
@@ -44,11 +44,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '~> 0.14.1'
   spec.add_development_dependency 'rake', '~> 13.0.6'
   spec.add_development_dependency 'rspec', '~> 3.12.0'
-  spec.add_development_dependency 'rubocop', '~> 1.50.1'
+  spec.add_development_dependency 'rubocop', '~> 1.56.4'
   spec.add_development_dependency 'rubyzip'
   spec.add_development_dependency 'semantic', '~> 1.6.1'
   spec.add_development_dependency 'simplecov', '~> 0.22.0'
-  spec.add_development_dependency 'timecop', '~> 0.9.5'
+  spec.add_development_dependency 'timecop', '~> 0.9.8'
   spec.add_development_dependency 'webmock', '~> 3.18.1'
 
 end
