@@ -38,7 +38,7 @@ if [[ -f $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem ]]; then
   gem cleanup
 fi
 
-gem push $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem
+# gem push $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem
 
 
 
