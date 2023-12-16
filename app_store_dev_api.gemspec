@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'activesupport', '~> 7.0', '>= 7.0.0'
   spec.add_runtime_dependency 'jwt', '~> 2.0', '>= 2.0.0'
-  spec.add_runtime_dependency 'zeitwerk', '>= 2.6.12'
+  spec.add_runtime_dependency 'zeitwerk', '~> 2.6', '>= 2.6.0'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'erb', '~> 4.0.2'
