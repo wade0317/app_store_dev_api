@@ -12,33 +12,40 @@ echo $CURRENT_DIR
 # Change the group of the current directory to "admin".
 /usr/bin/chgrp admin $CURRENT_DIR
 
+gem_files=$(find  $CURRENT_DIR -name "*.gemspec")
+for gemspec_file in $gem_files
+do
 
-rm -rf $CURRENT_DIR/*app_store_dev_api-*.gem
-gem build $CURRENT_DIR/app_store_dev_api.gemspec
+    gem_name=${gemspec_file##*/}
+    gem_name=${gem_name%.gemspec}
+    # echo $gem_name    
 
-GEM_VERSION_FILE=${CURRENT_DIR}/lib/app_store_dev_api/version.rb
-GEM_VERSION_KEY="VERSION"
-TAG_NAME=`grep "[ ].${GEM_VERSION_KEY}[ ]." ${GEM_VERSION_FILE} | cut -d'"' -f2`
+    rm -rf $CURRENT_DIR/*$gem_name-*.gem
+    gem build $CURRENT_DIR/$gem_name.gemspec
 
-COMMIT_FILE_LIST=$(git -C $CURRENT_DIR ls-files --other --modified --exclude-standard)
-echo $COMMIT_FILE_LIST
+    GEM_VERSION_FILE=${CURRENT_DIR}/lib/$gem_name/version.rb
+    GEM_VERSION_KEY="VERSION"
+    TAG_NAME=`grep "[ ].${GEM_VERSION_KEY}[ ]." ${GEM_VERSION_FILE} | cut -d'"' -f2`
+    # echo $TAG_NAME
 
-if [ -z "$COMMIT_FILE_LIST" ]; then
-  echo "没有需要提交的文件！"
-else
-  echo "111"
-  # $(git -C $CURRENT_DIR ls-files --other --modified --exclude-standard)
-  git -C $CURRENT_DIR add -A
-  git -C $CURRENT_DIR commit -m "add code for ${TAG_NAME}"
-  git -C $CURRENT_DIR push
-fi
+    COMMIT_FILE_LIST=$(git -C $CURRENT_DIR ls-files --other --modified --exclude-standard)
+    echo $COMMIT_FILE_LIST
 
-if [[ -f $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem ]]; then
-  gem install --local $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem
-  gem cleanup
-fi
+    if [ -z "$COMMIT_FILE_LIST" ]; then
+      echo "没有需要提交的文件！"
+    else
+      git -C $CURRENT_DIR add -A
+      git -C $CURRENT_DIR commit -m "add code for ${TAG_NAME}"
+      git -C $CURRENT_DIR push
+    fi
 
-# gem push $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem
+    if [[ -f $CURRENT_DIR/$gem_name-${TAG_NAME}.gem ]]; then
+      gem install --local $CURRENT_DIR/$gem_name-${TAG_NAME}.gem
+      gem cleanup
+    fi
+    # gem push $CURRENT_DIR/$gem_name-${TAG_NAME}.gem
+done
+
 
 
 
