@@ -38,59 +38,7 @@ if [[ -f $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem ]]; then
   gem cleanup
 fi
 
-# #合并到master分支
-# RELEASE_BRANCH="master"
-# CODING_BRANCH=$(git -C $CURRENT_DIR rev-parse --abbrev-ref HEAD)
-
-# if [[ "$CODING_BRANCH" == "$RELEASE_BRANCH" ]]; then
-#   echo "在master分支不需要处理"
-# else
-#   git -C $CURRENT_DIR checkout $RELEASE_BRANCH
-#   git -C $CURRENT_DIR merge $CODING_BRANCH
-#   git -C $CURRENT_DIR push
-#   git -C $CURRENT_DIR checkout $CODING_BRANCH
-# fi
-
-# #添加tag
-# EXIST_LOCAL_TAG=$(git -C $CURRENT_DIR tag --list ${TAG_NAME})
-# if [ -z "$EXIST_LOCAL_TAG" ]; then
-#   #statements
-#   echo "无本地tag:${TAG_NAME}"
-# else
-
-#   echo "删除本地tag:${TAG_NAME}"
-#   git -C $CURRENT_DIR tag -d ${TAG_NAME}
-# fi
-
-# REMOTE_EXIST_TAG=$(git -C $CURRENT_DIR ls-remote --tags origin "refs/tags/${TAG_NAME}")
-# if [ -z "$REMOTE_EXIST_TAG" ]; then
-#   #statements
-#   echo "无远程tag:${TAG_NAME}"
-# else
-
-#   DELETE_REMOTE_TAG=""
-#   read -p "存在远程分支,确认要删除远程分支吗？[Y/n]: " DELETE_REMOTE_TAG
-#   case "${DELETE_REMOTE_TAG}" in
-#   [yY][eE][sS] | [yY])
-#       echo "删除远程tag:${TAG_NAME}"
-#       git -C $CURRENT_DIR push origin :${TAG_NAME}
-#       ;;
-#   # [nN][oO] | [nN])
-#   #     echo "exit!"
-#   #     exit 1
-#   #     ;;
-#   *)
-#       echo "Exit!"
-#       exit 1
-#       ;;
-#   esac  
-# fi
-
-# git -C $CURRENT_DIR tag ${TAG_NAME}
-# git -C $CURRENT_DIR push origin ${TAG_NAME}
-
-# gem push $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem
-
+gem push $CURRENT_DIR/app_store_dev_api-${TAG_NAME}.gem
 
 
 
