@@ -35,14 +35,14 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'jwt', '~> 2.0', '>= 2.0.0'
   spec.add_runtime_dependency 'zeitwerk', '~> 2.6'
 
-  spec.add_development_dependency 'bundler' '~> 2.0.1'
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'erb', '~> 4.0.2'
   spec.add_development_dependency 'factory_bot', '~> 6.2.1'
   spec.add_development_dependency 'github_changelog_generator', '1.16.4'
   spec.add_development_dependency 'guard-rspec', '~> 4.7.3'
   spec.add_development_dependency 'pry', '~> 0.14.1'
-  spec.add_development_dependency 'rake', '~> 13.0.6'
-  spec.add_development_dependency 'rspec', '~> 3.12.0'
   spec.add_development_dependency 'rubocop', '~> 1.56.4'
   spec.add_development_dependency 'rubyzip', '~> 2.3'
   spec.add_development_dependency 'semantic', '~> 1.6.1'
