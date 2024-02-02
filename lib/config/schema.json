@@ -666,7 +666,7 @@
     },
     {
       "alias": "modify_in_app_purchase_territory_availablity",
-      "http_body_type": "Requests::V1::InAppPurchaseTerritorie::Create",
+      "http_body_type": "Requests::V1::InAppPurchaseAvailability::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseAvailabilities"
     },

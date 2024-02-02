@@ -3,7 +3,7 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module InAppPurchaseTerritorie
+      module InAppPurchaseAvailability
         class Create < Request::Body
           data do
             type 'inAppPurchaseAvailabilities'
