@@ -4,17 +4,13 @@ module AppStoreDevApi
   module Requests
     module V1
       module AppAvailability
-        class Update < Request::Body
+        class Create < Request::Body
           data do
             
-            id
-
-            type 'territoryAvailabilities'
+            type 'appAvailabilities'
 
             attributes do
-              property :available
-              property :pre_order_enabled
-              property :release_date
+              property :available_in_new_territories, required: true
             end
 
           end

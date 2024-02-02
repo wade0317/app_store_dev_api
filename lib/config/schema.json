@@ -342,27 +342,39 @@
       "http_method": "post",
       "http_body_type": "Requests::V1::AppPriceSchedule::Update",
       "url": "https://api.appstoreconnect.apple.com/v1/appPriceSchedules"
-    },
+    },    
     {
-      "alias": "list_app_availability",
+      "alias": "list_all_availability",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appAvailability"
+      "url": "https://api.appstoreconnect.apple.com/v1/territories"
     },
     {
       "alias": "read_app_availability",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/appAvailabilities/{id}"
+      "url": "https://api.appstoreconnect.apple.com/v2/appAvailabilities/{id}"
     },
     {
-      "alias": "list_app_territory_availability",
+      "alias": "read_app_availability_territories",
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/appAvailabilities/{id}/availableTerritories"
+      "url": "https://api.appstoreconnect.apple.com/v2/appAvailabilities/{id}/territoryAvailabilities"
     },
     {
-      "alias": "update_app_availability",
+      "alias": "create_apppreordery",
+      "http_method": "post",
+      "http_body_type": "Requests::V2::AppAvailability::Create",
+      "url": "https://api.appstoreconnect.apple.com/v2/appAvailabilities"
+    },
+    {
+      "alias": "modify_territory_availabilty_for_apppreorder",
       "http_method": "patch",
       "http_body_type": "Requests::V1::AppAvailability::Update",
-      "url": "https://api.appstoreconnect.apple.com/v1/appAvailabilities"
+      "url": "https://api.appstoreconnect.apple.com/v1/territoryAvailabilities/{id}"
+    },
+    {
+      "alias": "end_apppreorder",
+      "http_method": "post",
+      "http_body_type": "Requests::V1::AppAvailability::Delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/endAppAvailabilityPreOrders"
     },
     {
       "alias": "read_app_infos",
@@ -948,7 +960,7 @@
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionGracePeriods/{id}"
     },
     {
-      "alias": "modify_subscription_territory_availability",
+      "alias": "modify_subscription_grace_period",
       "http_body_type": "Requests::V1::SubscriptionGracePeriod::Create",
       "http_method": "patch",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionGracePeriods/{id}"

@@ -11,7 +11,6 @@ module AppStoreDevApi
             attributes do
               property :name, required: true
               property :product_id, required: true
-              property :available_in_all_territories
               property :family_sharable
               property :review_note
               property :subscription_period

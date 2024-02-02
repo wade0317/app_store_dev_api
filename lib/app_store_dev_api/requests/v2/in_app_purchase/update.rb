@@ -11,7 +11,6 @@ module AppStoreDevApi
 
             attributes do
               property :name
-              property :available_in_all_territories
               property :family_sharable
               property :review_note
             end
