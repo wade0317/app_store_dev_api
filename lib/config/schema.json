@@ -1580,6 +1580,169 @@
       "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{id}/items",
       "http_method": "get",
       "alias": "review_submissions_items"
+    },
+    {
+      "alias": "list_app_webhooks",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/webhooks"
+    },
+    {
+      "alias": "get_webhook",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhooks/{id}"
+    },
+    {
+      "alias": "list_webhook_deliveries",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhooks/{id}/deliveries"
+    },
+    {
+      "alias": "get_webhook_delivery_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhooks/{id}/relationships/deliveries"
+    },
+    {
+      "alias": "create_webhook",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhooks",
+      "http_body_type": "Requests::V1::Webhook::Create"
+    },
+    {
+      "alias": "redeliver_webhook",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhookdeliveries",
+      "http_body_type": "Requests::V1::WebhookDelivery::Create"
+    },
+    {
+      "alias": "test_webhook",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhookpings",
+      "http_body_type": "Requests::V1::WebhookPing::Create"
+    },
+    {
+      "alias": "update_webhook",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhooks/{id}",
+      "http_body_type": "Requests::V1::Webhook::Update"
+    },
+    {
+      "alias": "delete_webhook",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/webhooks/{id}"
+    },
+    {
+      "alias": "list_customer_reviews",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/customerReviews"
+    },
+    {
+      "alias": "get_customer_review_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/customerReviews"
+    },
+    {
+      "alias": "get_customer_review_summarizations",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/customerReviewSummarizations"
+    },
+    {
+      "alias": "list_app_accessibility_declarations",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/accessibilityDeclarations"
+    },
+    {
+      "alias": "get_app_accessibility_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/accessibilityDeclarations"
+    },
+    {
+      "alias": "get_accessibility_declaration",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/accessibilityDeclarations/{id}"
+    },
+    {
+      "alias": "create_accessibility_declaration",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/accessibilityDeclarations",
+      "http_body_type": "Requests::V1::AccessibilityDeclaration::Create"
+    },
+    {
+      "alias": "update_accessibility_declaration",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/accessibilityDeclarations/{id}",
+      "http_body_type": "Requests::V1::AccessibilityDeclaration::Update"
+    },
+    {
+      "alias": "delete_accessibility_declaration",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/accessibilityDeclarations/{id}"
+    },
+    {
+      "alias": "list_beta_feedback_crash_submissions",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/betaFeedbackCrashSubmissions"
+    },
+    {
+      "alias": "list_beta_feedback_screenshot_submissions",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/betaFeedbackScreenshotSubmissions"
+    },
+    {
+      "alias": "get_beta_tester_usage_metrics",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/metrics/betaTesterUsages"
+    },
+    {
+      "alias": "list_app_background_assets",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/backgroundassets"
+    },
+    {
+      "alias": "get_app_background_assets_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/backgroundassets"
+    },
+    {
+      "alias": "create_background_asset",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassets",
+      "http_body_type": "Requests::V1::BackgroundAsset::Create"
+    },
+    {
+      "alias": "create_background_asset_version",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassetversions",
+      "http_body_type": "Requests::V1::BackgroundAssetVersion::Create"
+    },
+    {
+      "alias": "commit_background_asset_upload",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassetuploadfiles/{id}"
+    },
+    {
+      "alias": "get_background_asset",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassets/{id}"
+    },
+    {
+      "alias": "get_background_asset_versions",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassets/{id}/versions"
+    },
+    {
+      "alias": "get_background_asset_version_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassets/{id}/relationships/versions"
+    },
+    {
+      "alias": "get_background_asset_version",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassetversions/{id}"
+    },
+    {
+      "alias": "get_background_asset_upload_files",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/backgroundassetversions/{id}/backgroundassetuploadfiles"
     }
   ],
   "types": [

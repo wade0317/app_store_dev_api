@@ -17,7 +17,9 @@ module AppStoreDevApi
               property :subscription_status_url_for_sandbox
               property :subscription_status_url_version
               property :subscription_status_url_version_for_sandbox
-              
+              property :accessibilityURL
+              property :streamlinedPurchasingEnabled, default: true
+
             end
           end
         end
