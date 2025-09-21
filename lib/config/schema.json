@@ -1750,7 +1750,10 @@
       "type": "BundleIdPlatform",
       "values": [
         "IOS",
-        "MAC_OS"
+        "MAC_OS",
+        "UNIVERSAL",
+        "SERVICES",
+        "APPLE_VISION_PRO"
       ]
     },
     {
@@ -1806,7 +1809,8 @@
       "values": [
         "IOS",
         "MAC_OS",
-        "TV_OS"
+        "TV_OS",
+        "APPLE_VISION_PRO"
       ]
     },
     {
@@ -1832,6 +1836,38 @@
         "APP_MANAGER",
         "ACCESS_TO_REPORTS",
         "CUSTOMER_REPORTS"
+      ]
+    },
+    {
+      "type": "WebhookEventType",
+      "values": [
+        "APP_STORE_VERSION_STATE_CHANGED",
+        "BUILD_STATE_CHANGED",
+        "BUILD_BETA_STATE_CHANGED",
+        "BETA_FEEDBACK_SUBMITTED",
+        "BACKGROUND_ASSET_STATE_CHANGED",
+        "WEBHOOK_PING"
+      ]
+    },
+    {
+      "type": "AccessibilityDeviceFamily",
+      "values": [
+        "IPHONE",
+        "IPAD",
+        "MAC",
+        "APPLE_TV",
+        "APPLE_VISION_PRO",
+        "APPLE_WATCH"
+      ]
+    },
+    {
+      "type": "BackgroundAssetState",
+      "values": [
+        "UPLOAD_IN_PROGRESS",
+        "UPLOADED",
+        "FAILED",
+        "PROCESSING",
+        "READY_FOR_DISTRIBUTION"
       ]
     }
   ]
