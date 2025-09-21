@@ -1,39 +1,202 @@
-# AppStoreDevApi
+# App Store Connect API Ruby SDK
 
-TODO: Delete this and the text below, and describe your gem
+一个用于与 Apple App Store Connect API 交互的 Ruby 客户端库。
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/app_store_dev_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+## 简介
 
-## Installation
+AppStoreDevApi 是一个功能完整的 Ruby gem，提供了对 Apple App Store Connect API 的便捷访问。该库基于官方 API 文档自动生成代码，确保 API 覆盖的完整性和准确性。
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+## 主要特性
 
-Install the gem and add to the application's Gemfile by executing:
+- 🔐 **JWT 认证** - 自动处理 JWT token 生成和认证
+- 🚀 **自动代码生成** - 基于官方 API 规范自动生成客户端代码
+- 📦 **完整 API 覆盖** - 支持 App Store Connect API v1/v2 的大部分功能
+- 🛠️ **简单易用** - 提供直观的 Ruby 接口调用 API
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+## 支持的 API 模块
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+### ✅ 应用管理
+- Apps 基础信息管理
+- App Store Versions 版本管理
+- App Store Version Submissions 提交审核
+- App Store Review Details 审核详情
+- Build 构建管理
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+### ✅ 媒体资源
+- App Screenshots 应用截图
+- App Previews 应用预览
+- App Event Video Clips 活动视频
 
-## Usage
+### ✅ 元数据管理
+- App Info & Localizations 应用信息本地化
+- App Store Version Localizations 版本本地化
+- App Categories 应用分类
+- Age Rating Declarations 年龄分级
 
-TODO: Write usage instructions here
+### ✅ 测试与分发
+- TestFlight Beta Testing 测试版管理
+- Beta Testers 测试人员管理
+- Beta Groups 测试组管理
+- Pre-Release Versions 预发布版本
 
-## Development
+### ✅ 内购与订阅
+- In-App Purchases 应用内购买
+- Subscriptions 订阅管理
+- Promotional Offers 促销优惠
 
-After checking out the repo, run `bin/console` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### ✅ 证书与配置
+- Bundle IDs 包标识符
+- Certificates 证书管理
+- Profiles 配置文件
+- Devices 设备管理
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### ✅ 用户与权限
+- Users 用户管理
+- User Invitations 用户邀请
+- User Roles 角色权限
 
-## Contributing
+### ✅ 报告与分析
+- Sales Reports 销售报告
+- Finance Reports 财务报告
+- Power and Performance Metrics 性能指标
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/app_store_dev_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/app_store_dev_api/blob/main/CODE_OF_CONDUCT.md).
+## 安装
 
-## License
+添加到你的 Gemfile：
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```ruby
+gem 'app_store_dev_api'
+```
 
-## Code of Conduct
+然后执行：
 
-Everyone interacting in the AppStoreDevApi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/app_store_dev_api/blob/main/CODE_OF_CONDUCT.md).
+```bash
+bundle install
+```
+
+或者直接安装：
+
+```bash
+gem install app_store_dev_api
+```
+
+## 快速开始
+
+### 1. 配置认证
+
+```ruby
+require 'app_store_dev_api'
+
+client = AppStoreDevApi::Client.new(
+  key_id: 'YOUR_KEY_ID',
+  issuer_id: 'YOUR_ISSUER_ID',
+  private_key: File.read('path/to/AuthKey_YOUR_KEY_ID.p8')
+)
+```
+
+### 2. 使用示例
+
+```ruby
+# 获取所有应用
+apps = client.apps
+
+# 获取特定应用信息
+app = client.app(id: 'APP_ID')
+
+# 创建新版本
+version = client.create_app_store_version(
+  attributes: {
+    platform: 'IOS',
+    versionString: '1.0.1'
+  },
+  relationships: {
+    app: { data: { type: 'apps', id: 'APP_ID' } }
+  }
+)
+
+# 上传截图
+screenshot = client.create_app_screenshot(
+  attributes: {
+    fileName: 'screenshot.png',
+    fileSize: 102400
+  },
+  relationships: {
+    appScreenshotSet: { data: { type: 'appScreenshotSets', id: 'SET_ID' } }
+  }
+)
+```
+
+## 获取 API 密钥
+
+1. 登录 [App Store Connect](https://appstoreconnect.apple.com)
+2. 前往「用户和访问」
+3. 选择「密钥」标签
+4. 点击「生成 API 密钥」或「+」按钮
+5. 输入密钥名称并选择访问权限
+6. 下载 .p8 私钥文件（只能下载一次）
+7. 记录密钥 ID 和发行者 ID
+
+## 系统要求
+
+- Ruby 2.7 或更高版本
+- 有效的 App Store Connect 账号
+- API 访问权限
+
+## 项目结构
+
+```
+lib/
+├── app_store_dev_api/
+│   ├── client.rb           # 主客户端类（自动生成）
+│   ├── base.rb             # 基础请求处理
+│   ├── client/
+│   │   ├── authorization.rb # JWT 认证实现
+│   │   └── builder.rb      # 代码生成器
+│   ├── requests/           # API 请求定义
+│   │   ├── v1/            # v1 API 请求
+│   │   └── v2/            # v2 API 请求
+│   └── object/            # 数据模型定义
+└── config/
+    └── schema.json        # API 端点配置
+```
+
+## 开发
+
+本项目使用自动代码生成系统，基于 `schema.json` 配置文件生成 API 客户端方法。
+
+### 重新生成客户端代码
+
+```bash
+ruby -r ./lib/app_store_dev_api/client/builder.rb -e "AppStoreDevApi::Client::Builder.new.write"
+```
+
+### 运行测试
+
+```bash
+bundle exec rspec
+```
+
+### 代码检查
+
+```bash
+bundle exec rubocop
+```
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 许可证
+
+MIT License
+
+## 相关链接
+
+- [官方 API 文档](https://developer.apple.com/documentation/appstoreconnectapi)
+- [App Store Connect](https://appstoreconnect.apple.com)
+- [GitHub 仓库](https://github.com/wade0317/app_store_dev_api)
+- [Gitee 镜像](https://gitee.com/goodtools/AppStoreApi-Ruby)
+
+---
+
+⚡ 由 Ruby 驱动 | 基于 App Store Connect API 构建
