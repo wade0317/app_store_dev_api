@@ -3,15 +3,16 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module ReviewSubmission
+      module AppPreview
         class Update < Request::Body
           data do
             id
-            type 'reviewSubmissions'
+            type 'appPreviews'
 
             attributes do
-              property :canceled
-              property :submitted
+              property :sourceFileChecksum
+              property :previewFrameTimeCode
+              property :uploaded
             end
           end
         end
@@ -19,4 +20,3 @@ module AppStoreDevApi
     end
   end
 end
-

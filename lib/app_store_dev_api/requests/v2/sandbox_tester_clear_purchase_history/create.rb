@@ -2,14 +2,14 @@
 
 module AppStoreDevApi
   module Requests
-    module V1
-      module AppStoreVersionReleaseRequest
+    module V2
+      module SandboxTesterClearPurchaseHistory
         class Create < Request::Body
           data do
-            type 'appStoreVersionReleaseRequests'
+            type 'sandboxTestersClearPurchaseHistoryRequest'
 
             relationships do
-              property :app_store_version, required: true
+              property :sandbox_testers, required: true
             end
           end
         end

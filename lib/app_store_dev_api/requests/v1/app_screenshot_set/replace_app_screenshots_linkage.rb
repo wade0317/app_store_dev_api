@@ -3,13 +3,13 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionReleaseRequest
-        class Create < Request::Body
+      module AppScreenshotSet
+        class ReplaceAppScreenshotsLinkage < Request::Body
           data do
-            type 'appStoreVersionReleaseRequests'
+            type 'appScreenshots'
 
             relationships do
-              property :app_store_version, required: true
+              property :appScreenshots, required: true
             end
           end
         end

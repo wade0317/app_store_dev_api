@@ -3,15 +3,14 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module ReviewSubmission
+      module ReviewSubmissionItem
         class Update < Request::Body
           data do
             id
-            type 'reviewSubmissions'
+            type 'reviewSubmissionItems'
 
             attributes do
-              property :canceled
-              property :submitted
+              property :resolved
             end
           end
         end
@@ -19,4 +18,3 @@ module AppStoreDevApi
     end
   end
 end
-

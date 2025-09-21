@@ -3,15 +3,15 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module ReviewSubmission
+      module SubscriptionImage
         class Update < Request::Body
           data do
             id
-            type 'reviewSubmissions'
+            type 'subscriptionImages'
 
             attributes do
-              property :canceled
-              property :submitted
+              property :uploaded
+              property :sourceFileChecksum
             end
           end
         end
@@ -19,4 +19,3 @@ module AppStoreDevApi
     end
   end
 end
-

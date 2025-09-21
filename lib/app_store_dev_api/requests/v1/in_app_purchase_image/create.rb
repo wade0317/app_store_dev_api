@@ -3,17 +3,18 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module InAppPurchaseImage
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'inAppPurchaseImages'
 
             attributes do
-              property :phasedReleaseState
+              property :fileName, required: true
+              property :fileSize, required: true
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :inAppPurchase, required: true
             end
           end
         end

@@ -3,17 +3,19 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module SubscriptionImage
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'subscriptionImages'
 
             attributes do
-              property :phasedReleaseState
+              property :fileName, required: true
+              property :fileSize, required: true
+              property :state, required: true
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :subscription, required: true
             end
           end
         end

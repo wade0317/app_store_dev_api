@@ -3,13 +3,13 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionReleaseRequest
-        class Create < Request::Body
+      module AppPreviewSet
+        class ReplaceAppPreviewsLinkage < Request::Body
           data do
-            type 'appStoreVersionReleaseRequests'
+            type 'appPreviews'
 
             relationships do
-              property :app_store_version, required: true
+              property :appPreviews, required: true
             end
           end
         end

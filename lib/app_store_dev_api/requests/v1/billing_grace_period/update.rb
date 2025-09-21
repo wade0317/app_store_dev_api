@@ -3,15 +3,13 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module ReviewSubmission
+      module BillingGracePeriod
         class Update < Request::Body
           data do
-            id
-            type 'reviewSubmissions'
+            type 'billingGracePeriods'
 
             attributes do
-              property :canceled
-              property :submitted
+              property :optIn, required: true
             end
           end
         end
@@ -19,4 +17,3 @@ module AppStoreDevApi
     end
   end
 end
-

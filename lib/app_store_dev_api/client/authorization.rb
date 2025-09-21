@@ -19,15 +19,20 @@ module AppStoreDevApi
       end
 
       def payload
+        current_time = Time.now.to_i
         {
-          exp: Time.now.to_i + 20 * 60,
           iss: issuer_id,
+          iat: current_time,
+          exp: current_time + 20 * 60,
           aud: AUDIENCE
         }
       end
 
       def header_fields
-        { kid: key_id }
+        {
+          kid: key_id,
+          typ: 'JWT'
+        }
       end
 
       def token

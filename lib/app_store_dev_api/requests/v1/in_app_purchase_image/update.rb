@@ -3,15 +3,16 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module ReviewSubmission
+      module InAppPurchaseImage
         class Update < Request::Body
           data do
             id
-            type 'reviewSubmissions'
+            type 'inAppPurchaseImages'
 
             attributes do
-              property :canceled
-              property :submitted
+              property :uploaded
+              property :sourceFileChecksum
+              property :state
             end
           end
         end
@@ -19,4 +20,3 @@ module AppStoreDevApi
     end
   end
 end
-

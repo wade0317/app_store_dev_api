@@ -3,17 +3,18 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module EndUserLicenseAgreement
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'endUserLicenseAgreements'
 
             attributes do
-              property :phasedReleaseState
+              property :agreementText, required: true
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :app, required: true
+              property :territories, required: true
             end
           end
         end

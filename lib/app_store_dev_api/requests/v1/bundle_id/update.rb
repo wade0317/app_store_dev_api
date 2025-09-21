@@ -2,12 +2,16 @@
 
 module AppStoreDevApi
   module Requests
-    module V2
-      module SandboxTestersClearPurchaseHistory
+    module V1
+      module BundleId
         class Update < Request::Body
           data do
-            
-            type 'sandboxTestersClearPurchaseHistoryRequest'
+            id
+            type 'bundleIds'
+
+            attributes do
+              property :name
+            end
           end
         end
       end

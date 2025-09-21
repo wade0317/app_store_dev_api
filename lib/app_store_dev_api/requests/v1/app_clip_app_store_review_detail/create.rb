@@ -3,17 +3,17 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module AppClipAppStoreReviewDetail
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'appClipAppStoreReviewDetails'
 
             attributes do
-              property :phasedReleaseState
+              property :invocationUrls, required: true
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :app_clip_default_experience, required: true
             end
           end
         end

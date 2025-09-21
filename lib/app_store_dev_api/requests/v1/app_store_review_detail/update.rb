@@ -10,12 +10,14 @@ module AppStoreDevApi
             type 'appStoreReviewDetails'
 
             attributes do
-              property :description
-              property :keywords
-              property :marketing_url
-              property :promotional_text
-              property :support_url
-              property :whats_new
+              property :contact_email
+              property :contact_phone
+              property :contact_first_name
+              property :contact_last_name
+              property :demo_account_name
+              property :demo_account_password
+              property :demo_account_required
+              property :notes
             end
           end
         end

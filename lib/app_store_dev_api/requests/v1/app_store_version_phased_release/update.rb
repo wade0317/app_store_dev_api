@@ -4,16 +4,13 @@ module AppStoreDevApi
   module Requests
     module V1
       module AppStoreVersionPhasedRelease
-        class Create < Request::Body
+        class Update < Request::Body
           data do
+            id
             type 'appStoreVersionPhasedReleases'
 
             attributes do
               property :phasedReleaseState
-            end
-
-            relationships do
-              property :app_store_version, required: true
             end
           end
         end

@@ -3,17 +3,18 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module AppStoreReviewAttachment
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'appStoreReviewAttachments'
 
             attributes do
-              property :phasedReleaseState
+              property :fileName, required: true
+              property :fileSize, required: true
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :app_store_review_detail, required: true
             end
           end
         end

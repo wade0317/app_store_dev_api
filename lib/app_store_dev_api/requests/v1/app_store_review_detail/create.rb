@@ -18,7 +18,10 @@ module AppStoreDevApi
               property :demo_account_required
               property :notes
             end
-            
+
+            relationships do
+              property :app_store_version, required: true
+            end
           end
         end
       end

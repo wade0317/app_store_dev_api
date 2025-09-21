@@ -3,17 +3,19 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module AppPreview
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'appPreviews'
 
             attributes do
-              property :phasedReleaseState
+              property :fileName, required: true
+              property :fileSize, required: true
+              property :mimeType
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :appPreviewSet, required: true
             end
           end
         end

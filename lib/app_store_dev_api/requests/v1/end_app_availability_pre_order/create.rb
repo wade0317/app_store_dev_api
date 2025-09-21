@@ -3,13 +3,13 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionReleaseRequest
+      module EndAppAvailabilityPreOrder
         class Create < Request::Body
           data do
-            type 'appStoreVersionReleaseRequests'
+            type 'endAppAvailabilityPreOrders'
 
             relationships do
-              property :app_store_version, required: true
+              property :territory_availabilities, required: true
             end
           end
         end

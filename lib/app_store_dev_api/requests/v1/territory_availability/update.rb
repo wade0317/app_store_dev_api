@@ -3,15 +3,16 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module ReviewSubmission
+      module TerritoryAvailability
         class Update < Request::Body
           data do
             id
-            type 'reviewSubmissions'
+            type 'territoryAvailabilities'
 
             attributes do
-              property :canceled
-              property :submitted
+              property :available
+              property :releaseDate
+              property :preOrderEnabled
             end
           end
         end
@@ -19,4 +20,3 @@ module AppStoreDevApi
     end
   end
 end
-

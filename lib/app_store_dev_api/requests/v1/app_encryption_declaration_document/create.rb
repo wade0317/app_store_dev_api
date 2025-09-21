@@ -3,17 +3,18 @@
 module AppStoreDevApi
   module Requests
     module V1
-      module AppStoreVersionPhasedRelease
+      module AppEncryptionDeclarationDocument
         class Create < Request::Body
           data do
-            type 'appStoreVersionPhasedReleases'
+            type 'appEncryptionDeclarationDocuments'
 
             attributes do
-              property :phasedReleaseState
+              property :fileSize, required: true
+              property :fileName, required: true
             end
 
             relationships do
-              property :app_store_version, required: true
+              property :appEncryptionDeclaration, required: true
             end
           end
         end
