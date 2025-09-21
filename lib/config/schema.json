@@ -194,6 +194,28 @@
       "alias": "bundle_id_relationships_bundle_id_capabilities"
     },
     {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/bundleIds",
+      "alias": "create_bundle_id",
+      "http_body_type": "Requests::V1::BundleId::Create"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/bundleIds/{id}",
+      "alias": "update_bundle_id",
+      "http_body_type": "Requests::V1::BundleId::Update"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/bundleIds/{id}/app",
+      "alias": "bundle_id_app"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/bundleIds/{id}/relationships/app",
+      "alias": "bundle_id_relationships_app"
+    },
+    {
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/certificates",
       "alias": "certificates"
@@ -348,6 +370,36 @@
       "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appPricePoints"
     },
     {
+      "alias": "list_app_categories",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appCategories"
+    },
+    {
+      "alias": "get_app_category",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appCategories/{id}"
+    },
+    {
+      "alias": "get_app_category_parent",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appCategories/{id}/parent"
+    },
+    {
+      "alias": "list_app_category_subcategories",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appCategories/{id}/subcategories"
+    },
+    {
+      "alias": "get_app_category_parent_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appCategories/{id}/relationships/parent"
+    },
+    {
+      "alias": "get_app_category_subcategories_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appCategories/{id}/relationships/subcategories"
+    },
+    {
       "alias": "app_price_schedule",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appPriceSchedule"
@@ -389,21 +441,26 @@
       "url": "https://api.appstoreconnect.apple.com/v2/appAvailabilities/{id}/territoryAvailabilities"
     },
     {
-      "alias": "create_apppreordery",
+      "alias": "get_app_availability_territories_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/appAvailabilities/{id}/relationships/territoryAvailabilities"
+    },
+    {
+      "alias": "create_app_preorder",
       "http_method": "post",
       "http_body_type": "Requests::V2::AppAvailability::Create",
       "url": "https://api.appstoreconnect.apple.com/v2/appAvailabilities"
     },
     {
-      "alias": "modify_territory_availabilty_for_apppreorder",
+      "alias": "modify_territory_availability_for_app_preorder",
       "http_method": "patch",
-      "http_body_type": "Requests::V1::AppAvailability::Update",
+      "http_body_type": "Requests::V1::TerritoryAvailability::Update",
       "url": "https://api.appstoreconnect.apple.com/v1/territoryAvailabilities/{id}"
     },
     {
-      "alias": "end_apppreorder",
+      "alias": "end_app_preorder",
       "http_method": "post",
-      "http_body_type": "Requests::V1::AppAvailability::Delete",
+      "http_body_type": "Requests::V1::EndAppAvailabilityPreOrder::Create",
       "url": "https://api.appstoreconnect.apple.com/v1/endAppAvailabilityPreOrders"
     },
     {
@@ -417,15 +474,96 @@
       "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appInfos"
     },
     {
+      "alias": "get_app_info_age_rating_declaration",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/ageRatingDeclaration"
+    },
+    {
+      "alias": "get_app_info_age_rating_declaration_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/ageRatingDeclaration"
+    },
+    {
+      "alias": "update_age_rating_declaration",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/ageRatingDeclarations/{id}",
+      "http_body_type": "Requests::V1::AgeRatingDeclaration::Update"
+    },
+    {
       "alias": "update_app_infos",
       "http_method": "patch",
       "http_body_type": "Requests::V1::AppInfo::Update",
       "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}"
     },
     {
+      "alias": "get_app_info_primary_category",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/primaryCategory"
+    },
+    {
+      "alias": "get_app_info_secondary_category",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/secondaryCategory"
+    },
+    {
+      "alias": "get_app_info_primary_category_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/primaryCategory"
+    },
+    {
+      "alias": "get_app_info_secondary_category_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/secondaryCategory"
+    },
+    {
+      "alias": "get_app_info_primary_subcategory_one",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/primarySubcategoryOne"
+    },
+    {
+      "alias": "get_app_info_primary_subcategory_two",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/primarySubcategoryTwo"
+    },
+    {
+      "alias": "get_app_info_secondary_subcategory_one",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/secondarySubcategoryOne"
+    },
+    {
+      "alias": "get_app_info_secondary_subcategory_two",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/secondarySubcategoryTwo"
+    },
+    {
+      "alias": "get_app_info_primary_subcategory_one_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/primarySubcategoryOne"
+    },
+    {
+      "alias": "get_app_info_primary_subcategory_two_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/primarySubcategoryTwo"
+    },
+    {
+      "alias": "get_app_info_secondary_subcategory_one_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/secondarySubcategoryOne"
+    },
+    {
+      "alias": "get_app_info_secondary_subcategory_two_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/secondarySubcategoryTwo"
+    },
+    {
       "alias": "list_app_info_localizations",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/appInfoLocalizations"
+    },
+    {
+      "alias": "get_app_info_localizations_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appInfos/{id}/relationships/appInfoLocalizations"
     },
     {
       "alias": "read_app_info_localizations",
@@ -504,6 +642,26 @@
       "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{id}"
     },
     {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{id}/appPreviewSets",
+      "alias": "app_store_version_localization_app_preview_sets"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{id}/appScreenshotSets",
+      "alias": "app_store_version_localization_app_screenshot_sets"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets",
+      "alias": "app_store_version_localization_relationships_app_preview_sets"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets",
+      "alias": "app_store_version_localization_relationships_app_screenshot_sets"
+    },
+    {
       "alias": "read_app_store_review_details",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/{id}"
@@ -529,13 +687,13 @@
     {
       "alias": "create_app_store_version_phased_releases",
       "http_method": "post",
-      "http_body_type": "Requests::V1::appStoreVersionPhasedReleases::Create",
+      "http_body_type": "Requests::V1::AppStoreVersionPhasedRelease::Create",
       "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionPhasedReleases"
     },
     {
       "alias": "update_app_store_version_phased_releases",
       "http_method": "patch",
-      "http_body_type": "Requests::V1::appStoreVersionPhasedReleases::Update",
+      "http_body_type": "Requests::V1::AppStoreVersionPhasedRelease::Update",
       "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersionPhasedReleases/{id}"
     },
     {
@@ -565,25 +723,73 @@
       "url": "https://api.appstoreconnect.apple.com/v1/customerReviews/{id}"
     },
     {
-      "alias": "get_customer_review_responses",
+      "alias": "get_customer_review_response",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/customerReviews/{id}/response"
     },
     {
-      "alias": "read_customer_review_responses",
-      "http_method": "delete",
+      "alias": "read_customer_review_response",
+      "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/customerReviewResponses/{id}"
     },
     {
-      "alias": "create_customer_review_responses",
+      "alias": "get_customer_review_response_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/customerReviews/{id}/relationships/response"
+    },
+    {
+      "alias": "create_customer_review_response",
       "http_method": "post",
       "http_body_type": "Requests::V1::CustomerReviewResponse::Create",
       "url": "https://api.appstoreconnect.apple.com/v1/customerReviewResponses"
     },
     {
-      "alias": "delete_customer_review_responses",
+      "alias": "delete_customer_review_response",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/customerReviewResponses/{id}"
+    },
+    {
+      "alias": "list_win_back_offers",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers"
+    },
+    {
+      "alias": "get_win_back_offer",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers/{id}"
+    },
+    {
+      "alias": "create_win_back_offer",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers",
+      "http_body_type": "Requests::V1::WinBackOffer::Create"
+    },
+    {
+      "alias": "update_win_back_offer",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers/{id}",
+      "http_body_type": "Requests::V1::WinBackOffer::Update"
+    },
+    {
+      "alias": "delete_win_back_offer",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers/{id}"
+    },
+    {
+      "alias": "list_win_back_offer_prices",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers/{id}/prices"
+    },
+    {
+      "alias": "get_win_back_offer_prices_linkages",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers/{id}/relationships/prices"
+    },
+    {
+      "alias": "update_win_back_offer_prices_linkages",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/winBackOffers/{id}/relationships/prices",
+      "http_body_type": "Requests::V1::WinBackOffer::UpdatePricesLinkages"
     },
     {
       "alias": "create_in_app_purchase",
@@ -642,6 +848,88 @@
       "http_body_type": "Requests::V1::InAppPurchaseSubmission::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseSubmissions"
+    },
+    {
+      "alias": "list_in_app_purchase_images",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/images"
+    },
+    {
+      "alias": "create_in_app_purchase_image",
+      "http_body_type": "Requests::V1::InAppPurchaseImage::Create",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseImages"
+    },
+    {
+      "alias": "read_in_app_purchase_image",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseImages/{id}"
+    },
+    {
+      "alias": "update_in_app_purchase_image",
+      "http_body_type": "Requests::V1::InAppPurchaseImage::Update",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseImages/{id}"
+    },
+    {
+      "alias": "delete_in_app_purchase_image",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseImages/{id}"
+    },
+    {
+      "alias": "list_in_app_purchase_images_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/images"
+    },
+    {
+      "alias": "read_in_app_purchase_availability_info",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/inAppPurchaseAvailability"
+    },
+    {
+      "alias": "read_in_app_purchase_availability_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/inAppPurchaseAvailability"
+    },
+    {
+      "alias": "list_in_app_purchase_price_points_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/pricePoints"
+    },
+    {
+      "alias": "list_in_app_purchase_price_point_equalizations",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/{id}/equalizations"
+    },
+    {
+      "alias": "list_in_app_purchase_price_point_equalizations_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/{id}/relationships/equalizations"
+    },
+    {
+      "alias": "list_in_app_purchase_localizations_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/inAppPurchaseLocalizations"
+    },
+    {
+      "alias": "read_in_app_purchase_promoted_purchase_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/promotedPurchase"
+    },
+    {
+      "alias": "read_in_app_purchase_app_store_review_screenshot_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/appStoreReviewScreenshot"
+    },
+    {
+      "alias": "read_in_app_purchase_iap_price_schedule_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/iapPriceSchedule"
+    },
+    {
+      "alias": "read_in_app_purchase_content_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/{id}/relationships/content"
     },
     {
       "alias": "read_schedule_info_for_in_app_purchase",
@@ -1121,6 +1409,44 @@
       "http_body_type": "Requests::V1::SubscriptionSubmission::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v1/subscriptionSubmissions"
+    },
+    {
+      "alias": "create_subscription_image",
+      "http_body_type": "Requests::V1::SubscriptionImage::Create",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionImages"
+    },
+    {
+      "alias": "read_subscription_image",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionImages/{id}"
+    },
+    {
+      "alias": "update_subscription_image",
+      "http_body_type": "Requests::V1::SubscriptionImage::Update",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionImages/{id}"
+    },
+    {
+      "alias": "delete_subscription_image",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptionImages/{id}"
+    },
+    {
+      "alias": "list_subscription_images",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/subscriptions/{id}/images"
+    },
+    {
+      "alias": "read_billing_grace_period",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/billingGracePeriod"
+    },
+    {
+      "alias": "update_billing_grace_period",
+      "http_body_type": "Requests::V1::BillingGracePeriod::Update",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/billingGracePeriod"
     }, 
     {
       "alias": "promote_purchase",
@@ -1174,13 +1500,18 @@
     {
       "alias": "commit_promote_purchase_image",
       "http_body_type": "Requests::V1::PromotedPurchasesImage::Update",
-      "http_method": "post",
+      "http_method": "patch",
       "url": "https://api.appstoreconnect.apple.com/v1/promotedPurchaseImages/{id}"
-    }, 
+    },
     {
       "alias": "delete_promote_purchase_image",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/promotedPurchaseImages/{id}"
+    },
+    {
+      "alias": "delete_promoted_purchase",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/promotedPurchases/{id}"
     }, 
     {
       "alias": "list_sandbox_testers",
@@ -1190,12 +1521,12 @@
     {
       "alias": "update_sandbox_tester",
       "http_body_type": "Requests::V2::SandboxTester::Update",
-      "http_method": "post",
+      "http_method": "patch",
       "url": "https://api.appstoreconnect.apple.com/v2/sandboxTesters/{id}"
     },
     {
       "alias": "clear_sandbox_tester_purchase_history",
-      "http_body_type": "Requests::V2::SandboxTester::Update",
+      "http_body_type": "Requests::V2::SandboxTesterClearPurchaseHistory::Create",
       "http_method": "post",
       "url": "https://api.appstoreconnect.apple.com/v2/sandboxTestersClearPurchaseHistoryRequest"
     },
@@ -1411,6 +1742,68 @@
     },
     {
       "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/appStoreVersion",
+      "alias": "build_app_store_version"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/relationships/appStoreVersion",
+      "alias": "build_relationships_app_store_version"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/metrics/betaBuildUsages",
+      "alias": "build_metrics_beta_build_usages"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/relationships/betaGroups",
+      "http_body_type": "Requests::V1::Build::AddBetaGroupsLinkage",
+      "alias": "add_build_beta_groups"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/relationships/individualTesters",
+      "http_body_type": "Requests::V1::Build::AddIndividualTestersLinkage",
+      "alias": "add_build_individual_testers"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/diagnosticSignatures",
+      "alias": "build_diagnostic_signatures"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/relationships/diagnosticSignatures",
+      "alias": "build_relationships_diagnostic_signatures"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/perfPowerMetrics",
+      "alias": "get_app_perf_power_metrics"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/perfPowerMetrics",
+      "alias": "get_build_perf_power_metrics"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/diagnosticSignatures/{id}/logs",
+      "alias": "get_diagnostic_signature_logs"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/icons",
+      "alias": "build_icons"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/builds/{id}/relationships/icons",
+      "alias": "build_relationships_icons"
+    },
+    {
+      "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations",
       "alias": "app_encryption_declarations"
     },
@@ -1421,13 +1814,176 @@
     },
     {
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations/{id}/app",
-      "alias": "app_encryption_declaration_app"
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations/{id}/relationships/app",
+      "alias": "app_encryption_declaration_relationships_app"
     },
     {
       "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations/{id}/relationships/app",
-      "alias": "app_encryption_declaration_relationships_app"
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarationDocuments/{id}",
+      "alias": "app_encryption_declaration_document"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations/{id}/appEncryptionDeclarationDocument",
+      "alias": "app_encryption_declaration_app_encryption_declaration_document"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations/{id}/relationships/appEncryptionDeclarationDocument",
+      "alias": "app_encryption_declaration_relationships_app_encryption_declaration_document"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarations",
+      "http_body_type": "Requests::V1::AppEncryptionDeclaration::Create",
+      "alias": "create_app_encryption_declaration"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarationDocuments",
+      "http_body_type": "Requests::V1::AppEncryptionDeclarationDocument::Create",
+      "alias": "create_app_encryption_declaration_document"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEncryptionDeclarationDocuments/{id}",
+      "http_body_type": "Requests::V1::AppEncryptionDeclarationDocument::Update",
+      "alias": "update_app_encryption_declaration_document"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviewSets/{id}",
+      "alias": "app_preview_set"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviewSets",
+      "http_body_type": "Requests::V1::AppPreviewSet::Create",
+      "alias": "create_app_preview_set"
+    },
+    {
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviewSets/{id}",
+      "alias": "delete_app_preview_set"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviewSets/{id}/appPreviews",
+      "alias": "app_preview_set_app_previews"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviewSets/{id}/relationships/appPreviews",
+      "alias": "app_preview_set_relationships_app_previews"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviewSets/{id}/relationships/appPreviews",
+      "http_body_type": "Requests::V1::AppPreviewSet::ReplaceAppPreviewsLinkage",
+      "alias": "replace_app_preview_set_app_previews"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviews/{id}",
+      "alias": "app_preview"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviews",
+      "http_body_type": "Requests::V1::AppPreview::Create",
+      "alias": "create_app_preview"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviews/{id}",
+      "http_body_type": "Requests::V1::AppPreview::Update",
+      "alias": "update_app_preview"
+    },
+    {
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appPreviews/{id}",
+      "alias": "delete_app_preview"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/{id}",
+      "alias": "app_screenshot_set"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets",
+      "http_body_type": "Requests::V1::AppScreenshotSet::Create",
+      "alias": "create_app_screenshot_set"
+    },
+    {
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/{id}",
+      "alias": "delete_app_screenshot_set"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/{id}/appScreenshots",
+      "alias": "app_screenshot_set_app_screenshots"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/{id}/relationships/appScreenshots",
+      "alias": "app_screenshot_set_relationships_app_screenshots"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/{id}/relationships/appScreenshots",
+      "http_body_type": "Requests::V1::AppScreenshotSet::ReplaceAppScreenshotsLinkage",
+      "alias": "replace_app_screenshot_set_app_screenshots"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshots/{id}",
+      "alias": "app_screenshot"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshots",
+      "http_body_type": "Requests::V1::AppScreenshot::Create",
+      "alias": "create_app_screenshot"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshots/{id}",
+      "http_body_type": "Requests::V1::AppScreenshot::Update",
+      "alias": "update_app_screenshot"
+    },
+    {
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appScreenshots/{id}",
+      "alias": "delete_app_screenshot"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreVersions/{id}/routingAppCoverage",
+      "alias": "app_store_version_routing_app_coverage"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/routingAppCoverages/{id}",
+      "alias": "routing_app_coverage"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/routingAppCoverages",
+      "http_body_type": "Requests::V1::RoutingAppCoverage::Create",
+      "alias": "create_routing_app_coverage"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/routingAppCoverages/{id}",
+      "http_body_type": "Requests::V1::RoutingAppCoverage::Update",
+      "alias": "update_routing_app_coverage"
+    },
+    {
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/routingAppCoverages/{id}",
+      "alias": "delete_routing_app_coverage"
     },
     {
       "http_method": "get",
@@ -1574,15 +2130,15 @@
     },
     {
       "alias": "create_review_submission",
-      "http_body_type": "ReviewSubmissionCreateRequest",
       "http_method": "post",
+      "http_body_type": "Requests::V1::ReviewSubmission::Create",
       "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions"
     },
     {
+      "alias": "update_review_submission",
       "http_method": "patch",
-      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{id}",
-      "http_body_type": "ReviewSubmissionUpdateRequest",
-      "alias": "update_review_submission"
+      "http_body_type": "Requests::V1::ReviewSubmission::Update",
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{id}"
     },
     {
       "http_method": "delete",
@@ -1601,15 +2157,80 @@
     },
 
     {
-      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissionItems",
-      "http_body_type": "ReviewSubmissionItemCreateRequest",
+      "alias": "create_review_submission_item",
       "http_method": "post",
-      "alias": "create_review_submission_item"
+      "http_body_type": "Requests::V1::ReviewSubmissionItem::Create",
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissionItems"
     },
     {
-      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{id}/items",
+      "alias": "update_review_submission_item",
+      "http_method": "patch",
+      "http_body_type": "Requests::V1::ReviewSubmissionItem::Update",
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissionItems/{id}"
+    },
+    {
+      "alias": "delete_review_submission_item",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissionItems/{id}"
+    },
+    {
+      "alias": "review_submissions_items",
       "http_method": "get",
-      "alias": "review_submissions_items"
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{id}/items"
+    },
+    {
+      "alias": "get_review_submission_items_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{id}/relationships/items"
+    },
+    {
+      "alias": "get_app_store_review_attachment",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewAttachments/{id}"
+    },
+    {
+      "alias": "list_app_store_review_attachments",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/{id}/appStoreReviewAttachments"
+    },
+    {
+      "alias": "get_app_store_review_attachments_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/{id}/relationships/appStoreReviewAttachments"
+    },
+    {
+      "alias": "create_app_store_review_attachment",
+      "http_method": "post",
+      "http_body_type": "Requests::V1::AppStoreReviewAttachment::Create",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewAttachments"
+    },
+    {
+      "alias": "update_app_store_review_attachment",
+      "http_method": "patch",
+      "http_body_type": "Requests::V1::AppStoreReviewAttachment::Update",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewAttachments/{id}"
+    },
+    {
+      "alias": "delete_app_store_review_attachment",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appStoreReviewAttachments/{id}"
+    },
+    {
+      "alias": "get_app_clip_app_store_review_detail",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appClipAppStoreReviewDetails/{id}"
+    },
+    {
+      "alias": "create_app_clip_app_store_review_detail",
+      "http_method": "post",
+      "http_body_type": "Requests::V1::AppClipAppStoreReviewDetail::Create",
+      "url": "https://api.appstoreconnect.apple.com/v1/appClipAppStoreReviewDetails"
+    },
+    {
+      "alias": "update_app_clip_app_store_review_detail",
+      "http_method": "patch",
+      "http_body_type": "Requests::V1::AppClipAppStoreReviewDetail::Update",
+      "url": "https://api.appstoreconnect.apple.com/v1/appClipAppStoreReviewDetails/{id}"
     },
     {
       "alias": "list_app_webhooks",
@@ -1659,11 +2280,6 @@
       "alias": "delete_webhook",
       "http_method": "delete",
       "url": "https://api.appstoreconnect.apple.com/v1/webhooks/{id}"
-    },
-    {
-      "alias": "list_customer_reviews",
-      "http_method": "get",
-      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/customerReviews"
     },
     {
       "alias": "get_customer_review_relationships",
@@ -1726,6 +2342,192 @@
       "alias": "list_app_background_assets",
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/backgroundassets"
+    },
+    {
+      "alias": "list_app_encryption_declarations",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appEncryptionDeclarations"
+    },
+    {
+      "alias": "get_app_encryption_declarations_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appEncryptionDeclarations"
+    },
+    {
+      "alias": "get_app_ci_product",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/ciProduct"
+    },
+    {
+      "alias": "get_app_ci_product_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/ciProduct"
+    },
+    {
+      "alias": "list_app_clips",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appClips"
+    },
+    {
+      "alias": "get_app_clips_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appClips"
+    },
+    {
+      "alias": "get_end_user_license_agreement",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/endUserLicenseAgreement"
+    },
+    {
+      "alias": "get_end_user_license_agreement_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/endUserLicenseAgreement"
+    },
+    {
+      "alias": "list_end_user_license_agreement_territories",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/endUserLicenseAgreements/{id}/territories"
+    },
+    {
+      "alias": "get_end_user_license_agreement_territories_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/endUserLicenseAgreements/{id}/relationships/territories"
+    },
+    {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/endUserLicenseAgreements",
+      "http_body_type": "Requests::V1::EndUserLicenseAgreement::Create",
+      "alias": "create_end_user_license_agreement"
+    },
+    {
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/endUserLicenseAgreements/{id}",
+      "alias": "end_user_license_agreement"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/endUserLicenseAgreements/{id}",
+      "http_body_type": "Requests::V1::EndUserLicenseAgreement::Update",
+      "alias": "update_end_user_license_agreement"
+    },
+    {
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/endUserLicenseAgreements/{id}",
+      "alias": "delete_end_user_license_agreement"
+    },
+    {
+      "alias": "list_app_custom_product_pages",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appCustomProductPages"
+    },
+    {
+      "alias": "get_app_custom_product_pages_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appCustomProductPages"
+    },
+    {
+      "alias": "list_app_store_version_experiments_v2",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appStoreVersionExperimentsV2"
+    },
+    {
+      "alias": "get_app_store_version_experiments_v2_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appStoreVersionExperimentsV2"
+    },
+    {
+      "alias": "get_app_infos_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appInfos"
+    },
+    {
+      "alias": "get_app_store_versions_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appStoreVersions"
+    },
+    {
+      "alias": "get_app_price_points_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/appPricePoints"
+    },
+    {
+      "alias": "list_app_events",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/appEvents"
+    },
+    {
+      "alias": "get_app_event",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEvents/{id}"
+    },
+    {
+      "alias": "create_app_event",
+      "http_method": "post",
+      "http_body_type": "Requests::V1::AppEvent::Create",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEvents"
+    },
+    {
+      "alias": "update_app_event",
+      "http_method": "patch",
+      "http_body_type": "Requests::V1::AppEvent::Update",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEvents/{id}"
+    },
+    {
+      "alias": "delete_app_event",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEvents/{id}"
+    },
+    {
+      "alias": "get_app_event_localizations",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEvents/{id}/localizations"
+    },
+    {
+      "alias": "get_app_event_localizations_relationship",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEvents/{id}/relationships/localizations"
+    },
+    {
+      "alias": "get_app_event_video_clip",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEventVideoClips/{id}"
+    },
+    {
+      "alias": "create_app_event_video_clip",
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEventVideoClips",
+      "http_body_type": "Requests::V1::AppEventVideoClip::Create"
+    },
+    {
+      "alias": "update_app_event_video_clip",
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEventVideoClips/{id}",
+      "http_body_type": "Requests::V1::AppEventVideoClip::Update"
+    },
+    {
+      "alias": "delete_app_event_video_clip",
+      "http_method": "delete",
+      "url": "https://api.appstoreconnect.apple.com/v1/appEventVideoClips/{id}"
+    },
+    {
+      "alias": "list_review_submissions",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/reviewSubmissions"
+    },
+    {
+      "alias": "get_game_center_detail",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/gameCenterDetail"
+    },
+    {
+      "alias": "get_in_app_purchases_v2_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/inAppPurchasesV2"
+    },
+    {
+      "alias": "get_subscription_groups_relationships",
+      "http_method": "get",
+      "url": "https://api.appstoreconnect.apple.com/v1/apps/{id}/relationships/subscriptionGroups"
     },
     {
       "alias": "get_app_background_assets_relationships",
@@ -1898,6 +2700,109 @@
         "FAILED",
         "PROCESSING",
         "READY_FOR_DISTRIBUTION"
+      ]
+    },
+    {
+      "type": "AppCategoryId",
+      "values": [
+        "BOOKS",
+        "BUSINESS",
+        "DEVELOPER_TOOLS",
+        "EDUCATION",
+        "ENTERTAINMENT",
+        "FINANCE",
+        "FOOD_AND_DRINK",
+        "GAMES",
+        "GRAPHICS_AND_DESIGN",
+        "HEALTH_AND_FITNESS",
+        "LIFESTYLE",
+        "MAGAZINES_AND_NEWSPAPERS",
+        "MEDICAL",
+        "MUSIC",
+        "NAVIGATION",
+        "NEWS",
+        "PHOTO_AND_VIDEO",
+        "PRODUCTIVITY",
+        "REFERENCE",
+        "SHOPPING",
+        "SOCIAL_NETWORKING",
+        "SPORTS",
+        "STICKERS",
+        "TRAVEL",
+        "UTILITIES",
+        "WEATHER"
+      ]
+    },
+    {
+      "type": "AppSubcategoryId",
+      "values": [
+        "GAMES_ACTION",
+        "GAMES_ADVENTURE",
+        "GAMES_ARCADE",
+        "GAMES_BOARD",
+        "GAMES_CARD",
+        "GAMES_CASINO",
+        "GAMES_CASUAL",
+        "GAMES_EDUCATIONAL",
+        "GAMES_FAMILY",
+        "GAMES_MUSIC",
+        "GAMES_PUZZLE",
+        "GAMES_RACING",
+        "GAMES_ROLE_PLAYING",
+        "GAMES_SIMULATION",
+        "GAMES_SPORTS",
+        "GAMES_STRATEGY",
+        "GAMES_TRIVIA",
+        "GAMES_WORD",
+        "STICKERS_ANIMALS_AND_NATURE",
+        "STICKERS_ART",
+        "STICKERS_CELEBRATIONS",
+        "STICKERS_CELEBRITIES",
+        "STICKERS_CHARACTERS",
+        "STICKERS_CLASSIC",
+        "STICKERS_COMICS_AND_CARTOONS",
+        "STICKERS_EATING_AND_DRINKING",
+        "STICKERS_EMOJI_AND_EXPRESSIONS",
+        "STICKERS_FASHION",
+        "STICKERS_FOOD_AND_DRINK",
+        "STICKERS_FUN_AND_GAMES",
+        "STICKERS_GAMING",
+        "STICKERS_GREETINGS",
+        "STICKERS_KIDS_AND_FAMILY",
+        "STICKERS_MOVIES_AND_TV",
+        "STICKERS_MUSIC",
+        "STICKERS_PEOPLE",
+        "STICKERS_PETS_AND_ANIMALS",
+        "STICKERS_PLACES_AND_OBJECTS",
+        "STICKERS_SPORTS_AND_ACTIVITIES",
+        "MAGAZINES_AND_NEWSPAPERS_ARTS_AND_PHOTOGRAPHY",
+        "MAGAZINES_AND_NEWSPAPERS_AUTOMOTIVE",
+        "MAGAZINES_AND_NEWSPAPERS_BRIDES_AND_WEDDINGS",
+        "MAGAZINES_AND_NEWSPAPERS_BUSINESS_AND_INVESTING",
+        "MAGAZINES_AND_NEWSPAPERS_CHILDRENS_MAGAZINES",
+        "MAGAZINES_AND_NEWSPAPERS_COMPUTERS_AND_INTERNET",
+        "MAGAZINES_AND_NEWSPAPERS_COOKING_FOOD_AND_DRINK",
+        "MAGAZINES_AND_NEWSPAPERS_CRAFTS_AND_HOBBIES",
+        "MAGAZINES_AND_NEWSPAPERS_ELECTRONICS_AND_AUDIO",
+        "MAGAZINES_AND_NEWSPAPERS_ENTERTAINMENT",
+        "MAGAZINES_AND_NEWSPAPERS_FASHION_AND_STYLE",
+        "MAGAZINES_AND_NEWSPAPERS_HEALTH_MIND_AND_BODY",
+        "MAGAZINES_AND_NEWSPAPERS_HISTORY",
+        "MAGAZINES_AND_NEWSPAPERS_HOME_AND_GARDEN",
+        "MAGAZINES_AND_NEWSPAPERS_LITERARY_MAGAZINES_AND_JOURNALS",
+        "MAGAZINES_AND_NEWSPAPERS_MENS_INTEREST",
+        "MAGAZINES_AND_NEWSPAPERS_MOVIES_AND_MUSIC",
+        "MAGAZINES_AND_NEWSPAPERS_NEWS_AND_POLITICS",
+        "MAGAZINES_AND_NEWSPAPERS_OUTDOORS_AND_NATURE",
+        "MAGAZINES_AND_NEWSPAPERS_PARENTING_AND_FAMILY",
+        "MAGAZINES_AND_NEWSPAPERS_PETS",
+        "MAGAZINES_AND_NEWSPAPERS_PROFESSIONAL_AND_TRADE",
+        "MAGAZINES_AND_NEWSPAPERS_REGIONAL_NEWS",
+        "MAGAZINES_AND_NEWSPAPERS_SCIENCE",
+        "MAGAZINES_AND_NEWSPAPERS_SPORTS_AND_LEISURE",
+        "MAGAZINES_AND_NEWSPAPERS_TEENS",
+        "MAGAZINES_AND_NEWSPAPERS_TRAVEL_AND_REGIONAL",
+        "MAGAZINES_AND_NEWSPAPERS_WOMENS_INTEREST"
       ]
     }
   ]
