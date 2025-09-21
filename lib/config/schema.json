@@ -197,6 +197,18 @@
       "alias": "certificate"
     },
     {
+      "http_method": "post",
+      "url": "https://api.appstoreconnect.apple.com/v1/certificates",
+      "alias": "create_certificate",
+      "http_body_type": "Requests::V1::Certificate::Create"
+    },
+    {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/certificates/{id}",
+      "alias": "update_certificate",
+      "http_body_type": "Requests::V1::Certificate::Update"
+    },
+    {
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/devices",
       "alias": "devices"
