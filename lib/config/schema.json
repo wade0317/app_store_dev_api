@@ -207,6 +207,12 @@
       "alias": "device"
     },
     {
+      "http_method": "patch",
+      "url": "https://api.appstoreconnect.apple.com/v1/devices/{id}",
+      "alias": "update_device",
+      "http_body_type": "Requests::V1::Device::Update"
+    },
+    {
       "http_method": "get",
       "url": "https://api.appstoreconnect.apple.com/v1/financeReports",
       "alias": "financial_reports"
