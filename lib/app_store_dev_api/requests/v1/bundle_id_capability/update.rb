@@ -1,22 +1,14 @@
-# frozen_string_literal: true
-
-
-
 module AppStoreDevApi
   module Requests
     module V1
       module BundleIdCapability
-        class Create < Request::Body
+        class Update < Request::Body
           data do
+            id
             type 'bundleIdCapabilities'
-
             attributes do
-              property :capability_type, required: true
+              property :capability_type
               property :settings
-            end
-
-            relationships do
-              property :bundle_id, required: true
             end
           end
         end
@@ -24,5 +16,3 @@ module AppStoreDevApi
     end
   end
 end
-
-
