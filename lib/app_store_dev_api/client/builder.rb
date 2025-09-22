@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'active_support/all'
+require 'erb'
+
 module AppStoreDevApi
   class Client
     class Builder

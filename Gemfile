@@ -6,3 +6,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
+
+gem "bigdecimal", "~> 3.2"
+
+gem "mutex_m", "~> 0.3.0"
+gem "drb", "~> 2.2"
