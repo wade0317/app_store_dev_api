@@ -1,25 +1,24 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module SubscriptionPromotionalOffers
-        class Create < Request::Body
-
-          data do
-            type 'subscriptionPromotionalOffers'
-
-            attributes do
-              property :duration, required: true
-              property :name, required: true
-              property :number_of_periods, required: true
-              property :offer_code, required: true
-              property :offer_mode, required: true
-            end
-          end
-          
+  module V1
+  module SubscriptionPromotionalOffer
+    class Create < Request::Body
+      data do
+        type 'subscriptionPromotionalOffers'
+        attributes do
+          property :duration, required: true
+          property :name, required: true
+          property :numberOfPeriods, required: true
+          property :offerCode, required: true
+          property :offerMode, required: true
+        end
+        relationships do
+          property :subscription, required: true
+          property :prices, required: true
         end
       end
     end
+  end
+  end
   end
 end

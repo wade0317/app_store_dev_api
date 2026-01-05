@@ -13,19 +13,23 @@ module AppStoreDevApi
         klass = Class.new do |data|
           include Object::DataType
           include Object::Attributes
+          include Object::Relationships
           include Object::Type
           include Object::Id
 
           data.send(:define_method, :initialize) do |**kwargs|
-            instance_variable_set('@relationships', kwargs.delete(:relationships).to_h)
+            # 提取 relationships 参数
+            relationships_data = kwargs.delete(:relationships) || {}
+
             instance_variable_set('@data', Array(kwargs.delete(:data)))
             instance_variable_set('@attributes', data::Attributes.new(**kwargs))
+            instance_variable_set('@relationships', data::Relationships.new(**relationships_data))
             instance_variable_set('@id', kwargs[id_arg_name])
           end
 
           def to_h
             props = {
-              relationships: @relationships,
+              relationships: relationships.to_h,
               attributes: attributes.to_h,
               type: type
             }

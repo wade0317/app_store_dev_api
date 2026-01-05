@@ -1,17 +1,16 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module SubscriptionGroupSubmission
-        class Create < Request::Body
-          
-          data do
-            type 'subscriptionGroupSubmissions'
-          end
-
+  module V1
+  module SubscriptionGroupSubmission
+    class Create < Request::Body
+      data do
+        type 'subscriptionGroupSubmissions'
+        relationships do
+          property :subscriptionGroup, required: true
         end
       end
     end
+  end
+  end
   end
 end

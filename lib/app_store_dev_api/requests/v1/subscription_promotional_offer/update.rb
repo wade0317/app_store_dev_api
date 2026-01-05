@@ -1,19 +1,17 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module SubscriptionPromotionalOffers
-        class Update < Request::Body
-
-          data do
-            id
-            type 'subscriptionPromotionalOffers'
-
-          end
-          
+  module V1
+  module SubscriptionPromotionalOffer
+    class Update < Request::Body
+      data do
+        id
+        type 'subscriptionPromotionalOffers'
+        relationships do
+          property :prices
         end
       end
     end
+  end
+  end
   end
 end

@@ -21,7 +21,7 @@ module AppStoreDevApi
 
           attributes.send(:define_method, :initialize) do |**kwargs|
             self.class.properties.each do |name, options|
-              raise ArgumentError, "#{name} required" if options[:required] && !kwargs[name]
+              raise ArgumentError, "#{name} required" if options[:required] && !kwargs.key?(name)
 
               value = kwargs.fetch(name, options[:default])
 

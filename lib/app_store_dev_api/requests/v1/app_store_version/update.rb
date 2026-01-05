@@ -1,25 +1,27 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module AppStoreVersion
-        class Update < Request::Body
-          data do
-            id
-            type 'appStoreVersions'
-
-            attributes do
-              property :description
-              property :keywords
-              property :marketing_url
-              property :promotional_text
-              property :support_url
-              property :whats_new
-            end
-          end
+  module V1
+  module AppStoreVersion
+    class Update < Request::Body
+      data do
+        id
+        type 'appStoreVersions'
+        attributes do
+          property :versionString
+          property :copyright
+          property :reviewType
+          property :releaseType
+          property :earliestReleaseDate
+          property :usesIdfa
+          property :downloadable
+        end
+        relationships do
+          property :build
+          property :appClipDefaultExperience
         end
       end
     end
+  end
+  end
   end
 end

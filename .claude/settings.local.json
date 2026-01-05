@@ -20,7 +20,11 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "WebSearch",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(bash:*)"
     ],
     "deny": [],
     "ask": []

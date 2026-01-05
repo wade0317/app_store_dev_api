@@ -1,5 +1,26 @@
 # frozen_string_literal: true
 
+require 'json'
+require 'active_support/core_ext/hash'
+
+# ⚠️  注意：此 Builder 类已不再使用
+#
+# Client 现在完全使用动态方法调度（method_missing），无需预生成方法。
+#
+# 此 Builder 类保留用于以下可选场景：
+# 1. IDE 自动补全支持 - 生成方法定义供 IDE 解析
+# 2. 类型检查工具 - 生成方法签名供 Sorbet/Steep 使用
+# 3. 文档生成 - 生成完整的方法列表文档
+#
+# 默认情况下不使用，Client 直接继承 Base 使用动态调度。
+#
+# 如需生成（可选）：
+#   ruby -r ./lib/app_store_dev_api/client/builder.rb \
+#     -e "AppStoreDevApi::Client::Builder.new.write"
+#
+# 生成后的文件：
+#   lib/app_store_dev_api/client_generated.rb (不会覆盖 client.rb)
+#
 module AppStoreDevApi
   class Client
     class Builder
@@ -11,6 +32,7 @@ module AppStoreDevApi
         # This file is generated.
         #
         # WARNING ABOUT GENERATED CODE
+        #
 
         module AppStoreDevApi
           class Client < Base
@@ -33,46 +55,23 @@ module AppStoreDevApi
       private_constant :TEMPLATE
 
       def web_service_endpoints
-        [
-          {
-            "alias": 'create_certificate',
-            "http_method": 'post',
-            "url": 'https://api.appstoreconnect.apple.com/v1/certificates',
-            "http_body_type": 'Requests::V1::Certificate::Create',
-            "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
-          },
-          {
-            "http_method": 'delete',
-            "url": 'https://api.appstoreconnect.apple.com/v1/users/{id}/relationships/visibleApps',
-            "alias": 'delete_visible_app',
-            "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
-          },
-          {
-            "alias": 'create_bundle_id',
-            "url": 'https://api.appstoreconnect.apple.com/v1/bundleIds',
-            "http_body_type": 'Requests::V1::BundleId::Create',
-            "http_method": 'post',
-            "see": 'https://developer.apple.com/documentation/appstoreconnectapi/register_a_new_bundle_id'
-          },
-          {
-            "alias": 'create_bundle_id_capability',
-            "url": 'https://api.appstoreconnect.apple.com/v1/bundleIdCapabilities',
-            "http_body_type": 'Requests::V1::BundleIdCapability::Create',
-            "http_method": 'post',
-            "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
-          },
-          {
-            "alias": 'create_beta_build_localization',
-            "url": 'https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations',
-            "http_body_type": 'Requests::V1::BetaBuildLocalization::Create',
-            "http_method": 'post',
-            "see": 'https://developer.apple.com/documentation/appstoreconnectapi'
-          }
-        ].map(&:symbolize_keys)
+        @web_service_endpoints ||= begin
+          schema_content = File.read(schema_path)
+          schema = JSON.parse(schema_content)
+          
+          schema['web_service_endpoints'].map do |endpoint|
+            endpoint.symbolize_keys.tap do |ep|
+              ep[:see] ||= 'https://developer.apple.com/documentation/appstoreconnectapi'
+            end
+          end
+        end
       end
 
-      def write
-        File.write('lib/app_store_dev_api/client.rb', source)
+      def write(output_file = 'lib/app_store_dev_api/client_generated.rb')
+        File.write(output_file, source)
+        puts "✅ 已生成方法定义到: #{output_file}"
+        puts "⚠️  注意: 这是可选的生成文件，仅用于 IDE 支持"
+        puts "   默认使用动态调度，无需此文件"
       end
 
       def source
@@ -85,6 +84,12 @@ module AppStoreDevApi
         end
 
         @source
+      end
+
+      private
+
+      def schema_path
+        File.join(Dir.pwd, 'lib/config/schema_v4.2.json')
       end
     end
   end
