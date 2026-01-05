@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+module AppStoreDevApi
+  module Requests
+    module V2
+      module GameCenterLeaderboardSetLocalizationV2
+        class Update < Request::Body
+          data do
+            type 'gameCenterLeaderboardSetLocalizations'
+
+            attributes do
+              property :name
+            end
+
+
+          end
+        end
+      end
+    end
+  end
+end

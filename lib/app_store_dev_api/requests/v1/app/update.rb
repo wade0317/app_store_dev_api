@@ -1,29 +1,25 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module App
-        class Update < Request::Body
-          data do
-            id
-            type 'apps'
-
-            attributes do
-              property :bundle_id
-              property :content_rights_declaration
-              property :primary_locale
-              property :subscription_status_url
-              property :subscription_status_url_for_sandbox
-              property :subscription_status_url_version
-              property :subscription_status_url_version_for_sandbox
-              property :accessibilityURL
-              property :streamlinedPurchasingEnabled, default: true
-
-            end
-          end
+  module V1
+  module App
+    class Update < Request::Body
+      data do
+        id
+        type 'apps'
+        attributes do
+          property :accessibilityUrl
+          property :bundleId
+          property :primaryLocale
+          property :subscriptionStatusUrl
+          property :subscriptionStatusUrlVersion
+          property :subscriptionStatusUrlForSandbox
+          property :subscriptionStatusUrlVersionForSandbox
+          property :contentRightsDeclaration
+          property :streamlinedPurchasingEnabled
         end
       end
     end
+  end
+  end
   end
 end

@@ -1,27 +1,24 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module AppStoreReviewDetail
-        class Update < Request::Body
-          data do
-            id
-            type 'appStoreReviewDetails'
-
-            attributes do
-              property :contact_email
-              property :contact_phone
-              property :contact_first_name
-              property :contact_last_name
-              property :demo_account_name
-              property :demo_account_password
-              property :demo_account_required
-              property :notes
-            end
-          end
+  module V1
+  module AppStoreReviewDetail
+    class Update < Request::Body
+      data do
+        id
+        type 'appStoreReviewDetails'
+        attributes do
+          property :contactFirstName
+          property :contactLastName
+          property :contactPhone
+          property :contactEmail
+          property :demoAccountName
+          property :demoAccountPassword
+          property :demoAccountRequired
+          property :notes
         end
       end
     end
+  end
+  end
   end
 end
