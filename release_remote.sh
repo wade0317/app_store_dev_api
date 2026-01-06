@@ -24,8 +24,7 @@ function readConfigValue()
 rm -rf $CURRENT_DIR/*app_store_dev_api-*.gem
 
 VERSION_FILE=${CURRENT_DIR}/lib/app_store_dev_api/version.rb
-VERSION_KEY="VERSION"
-VERSION_TAG_NAME=`grep "[ ].${VERSION_KEY}[ ]." ${VERSION_FILE} | cut -d'"' -f2`
+VERSION_TAG_NAME=$(grep VERSION ${VERSION_FILE} | cut -d"'" -f2)
 TAG_NAME="v${VERSION_TAG_NAME}"
 
 COMMIT_FILE_LIST=$(git -C $CURRENT_DIR ls-files --other --modified --exclude-standard)
