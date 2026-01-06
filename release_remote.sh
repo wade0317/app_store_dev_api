@@ -49,14 +49,49 @@ CODING_BRANCH=$(git -C $CURRENT_DIR rev-parse --abbrev-ref HEAD)
 if [[ "$CODING_BRANCH" == "$RELEASE_BRANCH" ]]; then
   echo "在master分支不需要处理"
 else
+  # 1. 同步远程仓库
+  echo "同步远程仓库..."
+  git -C $CURRENT_DIR fetch origin
+
+  # 2. 检查 coding_branch 的本地和远程状态
+  echo "检查 ${CODING_BRANCH} 分支状态..."
+  LOCAL_COMMIT=$(git -C $CURRENT_DIR rev-parse $CODING_BRANCH)
+  REMOTE_COMMIT=$(git -C $CURRENT_DIR rev-parse origin/$CODING_BRANCH 2>/dev/null || echo "")
+
+  if [ -n "$REMOTE_COMMIT" ]; then
+    if [ "$LOCAL_COMMIT" != "$REMOTE_COMMIT" ]; then
+      # 检查是否本地领先或落后
+      AHEAD=$(git -C $CURRENT_DIR rev-list --count origin/$CODING_BRANCH..$CODING_BRANCH)
+      BEHIND=$(git -C $CURRENT_DIR rev-list --count $CODING_BRANCH..origin/$CODING_BRANCH)
+
+      if [ "$AHEAD" -gt 0 ] && [ "$BEHIND" -gt 0 ]; then
+        echo "错误: ${CODING_BRANCH} 分支本地和远程已分叉，请手动处理"
+        exit 1
+      elif [ "$BEHIND" -gt 0 ]; then
+        echo "本地分支落后远程，正在同步..."
+        git -C $CURRENT_DIR pull origin $CODING_BRANCH
+      fi
+      # 如果本地领先，后面 push 会处理
+    fi
+  fi
+
+  # 3. 双向合并，确保两个分支同步到同一节点
+  echo "合并 ${CODING_BRANCH} 到 ${RELEASE_BRANCH}..."
   git -C $CURRENT_DIR checkout $RELEASE_BRANCH
+  git -C $CURRENT_DIR pull origin $RELEASE_BRANCH || true  # 先同步 release_branch
   git -C $CURRENT_DIR merge $CODING_BRANCH
   git -C $CURRENT_DIR push
 
+  echo "同步 ${RELEASE_BRANCH} 回 ${CODING_BRANCH}..."
   git -C $CURRENT_DIR checkout $CODING_BRANCH
-  git -C $CURRENT_DIR merge $RELEASE_BRANCH
+  # 使用 --ff-only 确保是 fast-forward 合并（两分支应该在同一节点）
+  if ! git -C $CURRENT_DIR merge $RELEASE_BRANCH --ff-only; then
+    echo "错误: 无法 fast-forward 合并，分支状态异常"
+    exit 1
+  fi
   git -C $CURRENT_DIR push
-  
+
+  echo "分支合并完成，${CODING_BRANCH} 和 ${RELEASE_BRANCH} 已同步到同一节点"
 fi
 
 
