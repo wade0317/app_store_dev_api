@@ -21,11 +21,11 @@ function readConfigValue()
 }
 
 
-rm -rf $CURRENT_DIR/*pindo-*.gem
+rm -rf $CURRENT_DIR/*app_store_dev_api-*.gem
 
-PINDO_VERSION_FILE=${CURRENT_DIR}/lib/pindo/version.rb
-PINDO_VERSION_KEY="VERSION"
-VERSION_TAG_NAME=`grep "[ ].${PINDO_VERSION_KEY}[ ]." ${PINDO_VERSION_FILE} | cut -d'"' -f2`
+VERSION_FILE=${CURRENT_DIR}/lib/app_store_dev_api/version.rb
+VERSION_KEY="VERSION"
+VERSION_TAG_NAME=`grep "[ ].${VERSION_KEY}[ ]." ${VERSION_FILE} | cut -d'"' -f2`
 TAG_NAME="v${VERSION_TAG_NAME}"
 
 COMMIT_FILE_LIST=$(git -C $CURRENT_DIR ls-files --other --modified --exclude-standard)
@@ -62,9 +62,9 @@ fi
 
 
 
-gem build $CURRENT_DIR/pindo.gemspec
-if [[ -f $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem ]]; then
-  gem install --local $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem
+gem build $CURRENT_DIR/app_store_dev_api.gemspec
+if [[ -f $CURRENT_DIR/app_store_dev_api-${VERSION_TAG_NAME}.gem ]]; then
+  gem install --local $CURRENT_DIR/app_store_dev_api-${VERSION_TAG_NAME}.gem
 fi
 
 
@@ -109,8 +109,8 @@ git -C $CURRENT_DIR push origin ${TAG_NAME}
 git -C $CURRENT_DIR checkout $CODING_BRANCH
 
 
-if [[ -f $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem ]]; then
-  gem push $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem
+if [[ -f $CURRENT_DIR/app_store_dev_api-${VERSION_TAG_NAME}.gem ]]; then
+  gem push $CURRENT_DIR/app_store_dev_api-${VERSION_TAG_NAME}.gem
 fi
 
 
