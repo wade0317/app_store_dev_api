@@ -24,9 +24,17 @@
       "Bash(python3:*)",
       "Bash(chmod:*)",
       "Bash(find:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(gem list:*)",
+      "Bash(rake help:*)",
+      "Bash(rake validate:*)",
+      "Bash(rake install_local:*)",
+      "Bash(timeout 180 bundle install:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/wade/MyDocument/ScriptCode/pindo"
+    ]
   }
 }

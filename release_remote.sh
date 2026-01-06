@@ -21,29 +21,11 @@ function readConfigValue()
 }
 
 
-# 自动检测当前项目名称
-GEMSPEC_FILE=$(find $CURRENT_DIR -maxdepth 1 -name "*.gemspec" | head -n 1)
-if [ -z "$GEMSPEC_FILE" ]; then
-  echo "错误: 未找到gemspec文件!"
-  exit 1
-fi
+rm -rf $CURRENT_DIR/*pindo-*.gem
 
-# 从gemspec文件名获取项目名称
-PROJECT_NAME=$(basename $GEMSPEC_FILE .gemspec)
-echo "检测到项目: $PROJECT_NAME"
-
-# 清理旧的gem文件
-rm -rf $CURRENT_DIR/*${PROJECT_NAME}-*.gem
-
-# 自动检测版本文件
-VERSION_FILE=$(find $CURRENT_DIR/lib -name "version.rb" | head -n 1)
-if [ -z "$VERSION_FILE" ]; then
-  echo "错误: 未找到version.rb文件!"
-  exit 1
-fi
-
-VERSION_KEY="VERSION"
-VERSION_TAG_NAME=$(grep -o "${VERSION_KEY}.*=.*['\"]\(.*\)['\"]" ${VERSION_FILE} | head -1 | sed -E "s/.*['\"]([0-9]+\.[0-9]+\.[0-9]+)['\"].*/\1/")
+PINDO_VERSION_FILE=${CURRENT_DIR}/lib/pindo/version.rb
+PINDO_VERSION_KEY="VERSION"
+VERSION_TAG_NAME=`grep "[ ].${PINDO_VERSION_KEY}[ ]." ${PINDO_VERSION_FILE} | cut -d'"' -f2`
 TAG_NAME="v${VERSION_TAG_NAME}"
 
 COMMIT_FILE_LIST=$(git -C $CURRENT_DIR ls-files --other --modified --exclude-standard)
@@ -80,9 +62,9 @@ fi
 
 
 
-gem build $GEMSPEC_FILE
-if [[ -f $CURRENT_DIR/${PROJECT_NAME}-${VERSION_TAG_NAME}.gem ]]; then
-  gem install --local $CURRENT_DIR/${PROJECT_NAME}-${VERSION_TAG_NAME}.gem
+gem build $CURRENT_DIR/pindo.gemspec
+if [[ -f $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem ]]; then
+  gem install --local $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem
 fi
 
 
@@ -127,8 +109,8 @@ git -C $CURRENT_DIR push origin ${TAG_NAME}
 git -C $CURRENT_DIR checkout $CODING_BRANCH
 
 
-if [[ -f $CURRENT_DIR/${PROJECT_NAME}-${VERSION_TAG_NAME}.gem ]]; then
-  gem push $CURRENT_DIR/${PROJECT_NAME}-${VERSION_TAG_NAME}.gem
+if [[ -f $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem ]]; then
+  gem push $CURRENT_DIR/pindo-${VERSION_TAG_NAME}.gem
 fi
 
 

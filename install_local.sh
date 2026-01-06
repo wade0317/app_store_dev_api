@@ -1,95 +1,84 @@
 #!/bin/bash
+# 简化的本地安装脚本 - 适用于库 gem 项目
 
-#当前脚本目录 (macOS兼容)
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  CURRENT_DIR=$(dirname $(greadlink -f $0 2>/dev/null || readlink $0 2>/dev/null || echo $0))
-else
-  CURRENT_DIR=$(dirname $(readlink -f $0))
-fi
-CURRENT_DIR=$(cd "$CURRENT_DIR" && pwd)
-echo $CURRENT_DIR
+set -e  # 遇到错误立即退出
 
+# 获取当前目录
+CURRENT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$CURRENT_DIR"
 
-# Make all files and directories in the current directory readable, writable, and executable for all users.
-/bin/chmod -R a+rwx $CURRENT_DIR
-# Change the owner of the current directory to the current user.
-/usr/sbin/chown $(whoami) $CURRENT_DIR
-# Change the group of the current directory to "admin".
-/usr/bin/chgrp admin $CURRENT_DIR
+echo "=========================================="
+echo "本地构建和安装 Gem"
+echo "=========================================="
+echo
 
-function readConfigValue()
-{
-  File=$1
-  KEY=$2
-  VALUE=$(grep -m 1 -o "^[ ]*$KEY[ ]*=[ ]*[\"]*.*[\"]*" $File | sed -e "s/^[ ]*$KEY[ ]*=[ ]*[\"]*//" -e "s/[\"]*$//")
-  echo $VALUE
-}
-
-
-# 自动检测当前项目名称
-GEMSPEC_FILE=$(find $CURRENT_DIR -maxdepth 1 -name "*.gemspec" | head -n 1)
+# 1. 自动检测项目名称
+GEMSPEC_FILE=$(find . -maxdepth 1 -name "*.gemspec" | head -n 1)
 if [ -z "$GEMSPEC_FILE" ]; then
-  echo "错误: 未找到gemspec文件!"
+  echo "❌ 错误: 未找到 .gemspec 文件"
   exit 1
 fi
 
-# 从gemspec文件名获取项目名称
-PROJECT_NAME=$(basename $GEMSPEC_FILE .gemspec)
-echo "检测到项目: $PROJECT_NAME"
+PROJECT_NAME=$(basename "$GEMSPEC_FILE" .gemspec)
+echo "项目: $PROJECT_NAME"
 
-# 清理旧的gem文件
-rm -rf $CURRENT_DIR/*${PROJECT_NAME}-*.gem
-
-# 自动检测版本文件
-VERSION_FILE=$(find $CURRENT_DIR/lib -name "version.rb" | head -n 1)
+# 2. 自动检测版本号
+VERSION_FILE=$(find ./lib -name "version.rb" | head -n 1)
 if [ -z "$VERSION_FILE" ]; then
-  echo "错误: 未找到version.rb文件!"
+  echo "❌ 错误: 未找到 version.rb 文件"
   exit 1
 fi
 
-echo "检测到版本文件: $VERSION_FILE"
-VERSION_KEY="VERSION"
-# 改进版本号提取方式，确保只获取版本号部分
-VERSION_TAG_NAME=$(grep -o "${VERSION_KEY}.*=.*['\"]\(.*\)['\"]" ${VERSION_FILE} | head -1 | sed -E "s/.*['\"]([0-9]+\.[0-9]+\.[0-9]+)['\"].*/\1/")
-echo "检测到版本: $VERSION_TAG_NAME"
+# 提取版本号
+VERSION=$(grep -o "VERSION.*=.*['\"][0-9.]*['\"]" "$VERSION_FILE" | sed -E "s/.*['\"]([0-9.]+)['\"].*/\1/")
 
-# 验证版本号格式
-if [[ ! $VERSION_TAG_NAME =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-  echo "错误: 无法正确解析版本号，获取到的值: '$VERSION_TAG_NAME'"
-  echo "直接查看版本文件内容:"
-  cat $VERSION_FILE
+if [ -z "$VERSION" ]; then
+  echo "❌ 错误: 无法解析版本号"
+  cat "$VERSION_FILE"
   exit 1
 fi
 
+echo "版本: $VERSION"
+echo
 
-# 构建和安装gem
-echo "构建 $PROJECT_NAME gem..."
-gem build $GEMSPEC_FILE
+# 3. 清理旧的 gem 文件
+echo "清理旧的 gem 文件..."
+rm -f *.gem
+echo "✓ 清理完成"
+echo
 
-# 查找生成的gem文件（在当前目录和CURRENT_DIR中查找）
-GEM_FILE=$(find . -maxdepth 1 -name "${PROJECT_NAME}-${VERSION_TAG_NAME}.gem" | head -n 1)
-if [ -z "$GEM_FILE" ]; then
-  GEM_FILE=$(find $CURRENT_DIR -maxdepth 1 -name "${PROJECT_NAME}-${VERSION_TAG_NAME}.gem" | head -n 1)
+# 4. 构建 gem
+echo "构建 gem..."
+gem build "$GEMSPEC_FILE"
+
+GEM_FILE="${PROJECT_NAME}-${VERSION}.gem"
+
+if [ ! -f "$GEM_FILE" ]; then
+  echo "❌ 错误: gem 构建失败，未找到 $GEM_FILE"
+  exit 1
 fi
 
-if [ -n "$GEM_FILE" ]; then
-  echo "找到gem文件: $GEM_FILE"
-  echo "安装 $PROJECT_NAME-${VERSION_TAG_NAME}.gem..."
-  gem install --local "$GEM_FILE"
-else
-  echo "错误: 未找到生成的gem文件! 尝试查找任何版本的gem..."
-  ANY_GEM=$(find . -maxdepth 1 -name "${PROJECT_NAME}-*.gem" | head -n 1)
-  if [ -n "$ANY_GEM" ]; then
-    echo "找到gem文件: $ANY_GEM"
-    echo "安装 $ANY_GEM..."
-    gem install --local "$ANY_GEM"
-  else
-    echo "未找到任何${PROJECT_NAME}的gem文件"
-  fi
-fi
+echo "✓ 构建成功: $GEM_FILE"
+echo
 
+# 5. 安装到本地
+echo "安装到本地..."
+gem install "$GEM_FILE"
 
-
-
-
-
+echo
+echo "=========================================="
+echo "✅ 安装成功！"
+echo "=========================================="
+echo
+echo "使用方法 (Ruby 代码中):"
+echo "  require 'app_store_dev_api'"
+echo "  client = AppStoreDevApi::Client.new("
+echo "    key_id: 'YOUR_KEY_ID',"
+echo "    issuer_id: 'YOUR_ISSUER_ID',"
+echo "    private_key: File.read('AuthKey.p8')"
+echo "  )"
+echo
+echo "验证安装:"
+echo "  gem list | grep $PROJECT_NAME"
+echo "  ruby -r app_store_dev_api -e 'puts AppStoreDevApi::VERSION'"
+echo "=========================================="
