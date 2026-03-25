@@ -22,6 +22,7 @@ module AppStoreDevApi
             relationships do
               property :gameCenterDetail
               property :gameCenterGroup
+              property :versions
             end
 
           end

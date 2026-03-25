@@ -11,7 +11,7 @@ module AppStoreDevApi
   #     private_key: private_key_pem
   #   )
   #
-  # 所有 API 方法都可用（共 1,210 个方法）:
+  # 所有 API 方法都可用（共 1,208 个方法）:
   #   client.list_apps
   #   client.create_bundle_id(...)
   #   client.delete_user(id: 'user_id')
@@ -25,7 +25,7 @@ module AppStoreDevApi
   #   client.respond_to?(:list_apps)  # => true
   #
   # 方法总数:
-  #   client.web_service_endpoint_aliases.size  # => 1210
+  #   client.web_service_endpoint_aliases.size  # => 1208
   #
   # API 文档:
   #   https://developer.apple.com/documentation/appstoreconnectapi

@@ -21,6 +21,7 @@ module AppStoreDevApi
               property :gameCenterGroup
               property :leaderboard
               property :leaderboardV2
+              property :versions
             end
 
           end

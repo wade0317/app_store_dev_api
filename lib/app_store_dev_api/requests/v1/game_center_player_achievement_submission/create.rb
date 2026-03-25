@@ -15,6 +15,7 @@ module AppStoreDevApi
               property :scopedPlayerId, required: true
               property :submittedDate
               property :vendorIdentifier, required: true
+              property :preReleased
             end
 
 

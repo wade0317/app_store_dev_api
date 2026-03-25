@@ -16,6 +16,7 @@ module AppStoreDevApi
               property :score, required: true
               property :submittedDate
               property :vendorIdentifier, required: true
+              property :preReleased
             end
 
 
