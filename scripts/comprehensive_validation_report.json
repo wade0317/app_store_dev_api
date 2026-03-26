@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-01-05T18:13:18+08:00",
+  "summary": {
+    "total_issues": 0,
+    "schema_issues": 0,
+    "request_issues": 0,
+    "completeness_issues": 0
+  },
+  "schema_issues": [],
+  "request_issues": [],
+  "completeness_issues": []
+}
