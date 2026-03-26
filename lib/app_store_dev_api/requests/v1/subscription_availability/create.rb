@@ -1,19 +1,20 @@
-# frozen_string_literal: true
-
 module AppStoreDevApi
   module Requests
-    module V1
-      module SubscriptionAvailability
-        class Create < Request::Body
-          data do
-            type 'subscriptionAvailabilities'
-            
-            attributes do
-              property :available_in_new_territories, required: true
-            end
-          end
+  module V1
+  module SubscriptionAvailability
+    class Create < Request::Body
+      data do
+        type 'subscriptionAvailabilitys'
+        attributes do
+          property :availableInNewTerritories, required: true
+        end
+        relationships do
+          property :subscription, required: true
+          property :availableTerritories, required: true
         end
       end
     end
+  end
+  end
   end
 end

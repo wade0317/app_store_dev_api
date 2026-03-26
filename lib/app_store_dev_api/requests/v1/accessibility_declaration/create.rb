@@ -7,12 +7,15 @@ module AppStoreDevApi
             type 'accessibilityDeclarations'
             attributes do
               property :deviceFamily, required: true
-              property :hasMotion
-              property :hasFlashingLights
-              property :hasStrobingLights
-              property :hasSoundEffects
-              property :hasBackgroundAudio
-              property :isMadeForKids
+              property :supportsAudioDescriptions
+              property :supportsCaptions
+              property :supportsDarkInterface
+              property :supportsDifferentiateWithoutColorAlone
+              property :supportsLargerText
+              property :supportsReducedMotion
+              property :supportsSufficientContrast
+              property :supportsVoiceControl
+              property :supportsVoiceover
             end
             relationships do
               property :app, required: true
