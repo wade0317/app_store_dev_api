@@ -32,6 +32,6 @@ module AppStoreDevApi
   #
   class Client < Base
     # 所有方法通过 Base#method_missing 动态调度
-    # 端点配置从 lib/config/schema_v4.2.json 加载
+    # 端点配置从 lib/config/schema_v4.3.json 加载
   end
 end

@@ -89,7 +89,7 @@ module AppStoreDevApi
       private
 
       def schema_path
-        File.join(Dir.pwd, 'lib/config/schema_v4.2.json')
+        File.join(Dir.pwd, 'lib/config/schema_v4.3.json')
       end
     end
   end

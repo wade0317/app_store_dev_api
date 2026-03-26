@@ -17,7 +17,7 @@ openapi_paths = openapi_data['paths']
 
 # 2. 读取 schema.json 配置
 schema_files = [
-  File.join(__dir__, '../lib/config/schema_v4.2.json'),
+  File.join(__dir__, '../lib/config/schema_v4.3.json'),
   File.join(__dir__, '../lib/config/schema.json')
 ].find { |f| File.exist?(f) }
 

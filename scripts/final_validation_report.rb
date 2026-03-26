@@ -15,7 +15,7 @@ puts
 openapi_file = 'docs/openapi.oas4.2.json'
 openapi_data = JSON.parse(File.read(openapi_file))
 
-schema_file = 'lib/config/schema_v4.2.json'
+schema_file = 'lib/config/schema_v4.3.json'
 schema_data = JSON.parse(File.read(schema_file))
 
 request_files = Dir.glob('lib/app_store_dev_api/requests/**/{create,update}.rb')
